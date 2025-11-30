@@ -131,15 +131,10 @@ const HTML_CONTENT = `
         transition: all 0.3s ease;
     }
 
-    #hitokoto a {
+    #hitokoto span {
         color: #4dffb8;
-        text-decoration: none;
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
         transition: all 0.3s ease;
-    }
-
-    #hitokoto a:hover {
-        color: #6fffcb;
     }
 
     body.dark-theme #hitokoto {
@@ -147,7 +142,7 @@ const HTML_CONTENT = `
         text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
     }
 
-    body.dark-theme #hitokoto a {
+    body.dark-theme #hitokoto span {
         color: #7ba1e9;
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
     }
@@ -347,320 +342,6 @@ const HTML_CONTENT = `
         background-color: #323642;
         color: #e3e3e3;
         border-color: #444;
-    }
-
-    /* 日志弹窗样式 */
-    .logs-modal-content {
-        background-color: white;
-        padding: 0;
-        border-radius: 12px;
-        width: 90%;
-        max-width: 900px;
-        max-height: 80vh;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-        animation: modalFadeIn 0.3s ease;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .logs-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 25px;
-        border-bottom: 1px solid #e0e0e0;
-    }
-
-    .logs-header h3 {
-        margin: 0;
-        font-size: 20px;
-        color: #333;
-    }
-
-    .logs-close-btn {
-        background: none;
-        border: none;
-        font-size: 24px;
-        color: #999;
-        cursor: pointer;
-        padding: 0;
-        width: 30px;
-        height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        transition: all 0.2s;
-    }
-
-    .logs-close-btn:hover {
-        background-color: #f0f0f0;
-        color: #333;
-    }
-
-    .logs-filters {
-        padding: 15px 25px;
-        display: flex;
-        gap: 10px;
-        border-bottom: 1px solid #e0e0e0;
-    }
-
-    .logs-filters select {
-        padding: 8px 12px;
-        border: 1px solid #e0e0e0;
-        border-radius: 5px;
-        font-size: 14px;
-        outline: none;
-    }
-
-    .logs-refresh-btn {
-        padding: 8px 15px;
-        background-color: #43b883;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 14px;
-        transition: all 0.2s;
-    }
-
-    .logs-refresh-btn:hover {
-        background-color: #35a674;
-    }
-
-    .logs-content {
-        flex: 1;
-        overflow-y: auto;
-        padding: 20px 25px;
-        min-height: 300px;
-    }
-
-    .logs-loading {
-        text-align: center;
-        padding: 40px;
-        color: #999;
-        font-size: 14px;
-    }
-
-    .log-entry {
-        background-color: #f9f9f9;
-        border-radius: 8px;
-        padding: 15px;
-        margin-bottom: 15px;
-        border-left: 4px solid #43b883;
-        transition: all 0.2s;
-    }
-
-    .log-entry:hover {
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .log-entry.error {
-        border-left-color: #e74c3c;
-    }
-
-    .log-header-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 10px;
-    }
-
-    .log-time {
-        font-size: 13px;
-        color: #666;
-    }
-
-    .log-type {
-        padding: 3px 8px;
-        border-radius: 3px;
-        font-size: 12px;
-        font-weight: 500;
-    }
-
-    .log-type.scheduled {
-        background-color: #e3f2fd;
-        color: #1976d2;
-    }
-
-    .log-type.manual {
-        background-color: #f3e5f5;
-        color: #7b1fa2;
-    }
-
-    .log-summary {
-        font-size: 14px;
-        color: #333;
-        margin-bottom: 10px;
-    }
-
-    .log-users {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 10px;
-        margin-top: 10px;
-    }
-
-    .log-user-item {
-        background-color: white;
-        padding: 10px;
-        border-radius: 5px;
-        font-size: 13px;
-    }
-
-    .log-user-name {
-        font-weight: 600;
-        color: #333;
-        margin-bottom: 5px;
-    }
-
-    .log-user-stats {
-        color: #666;
-        font-size: 12px;
-    }
-
-    .log-user-stats .ok {
-        color: #43b883;
-    }
-
-    .log-user-stats .error {
-        color: #e74c3c;
-    }
-
-    .log-error-links {
-        margin-top: 8px;
-        padding-top: 8px;
-        border-top: 1px solid #f0f0f0;
-    }
-
-    .log-error-link {
-        font-size: 11px;
-        color: #999;
-        margin: 3px 0;
-        word-break: break-all;
-    }
-
-    .logs-pagination {
-        padding: 15px 25px;
-        border-top: 1px solid #e0e0e0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .logs-pagination button {
-        padding: 8px 15px;
-        background-color: #43b883;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 14px;
-        transition: all 0.2s;
-    }
-
-    .logs-pagination button:hover:not(:disabled) {
-        background-color: #35a674;
-    }
-
-    .logs-pagination button:disabled {
-        background-color: #ccc;
-        cursor: not-allowed;
-    }
-
-    .logs-pagination span {
-        font-size: 14px;
-        color: #666;
-    }
-
-    /* 暗色主题日志样式 */
-    body.dark-theme .logs-modal-content {
-        background-color: #252830;
-    }
-
-    body.dark-theme .logs-header {
-        border-bottom-color: #3a3e4a;
-    }
-
-    body.dark-theme .logs-header h3 {
-        color: #e3e3e3;
-    }
-
-    body.dark-theme .logs-close-btn {
-        color: #999;
-    }
-
-    body.dark-theme .logs-close-btn:hover {
-        background-color: #3a3e4a;
-        color: #e3e3e3;
-    }
-
-    body.dark-theme .logs-filters {
-        border-bottom-color: #3a3e4a;
-    }
-
-    body.dark-theme .logs-filters select {
-        background-color: #323642;
-        color: #e3e3e3;
-        border-color: #444;
-    }
-
-    body.dark-theme .logs-refresh-btn {
-        background-color: #5d7fb9;
-    }
-
-    body.dark-theme .logs-refresh-btn:hover {
-        background-color: #4a6fa5;
-    }
-
-    body.dark-theme .log-entry {
-        background-color: #2a2e38;
-        border-left-color: #5d7fb9;
-    }
-
-    body.dark-theme .log-entry.error {
-        border-left-color: #e74c3c;
-    }
-
-    body.dark-theme .log-time {
-        color: #999;
-    }
-
-    body.dark-theme .log-summary {
-        color: #e3e3e3;
-    }
-
-    body.dark-theme .log-user-item {
-        background-color: #323642;
-    }
-
-    body.dark-theme .log-user-name {
-        color: #e3e3e3;
-    }
-
-    body.dark-theme .log-user-stats {
-        color: #999;
-    }
-
-    body.dark-theme .log-error-links {
-        border-top-color: #3a3e4a;
-    }
-
-    body.dark-theme .logs-pagination {
-        border-top-color: #3a3e4a;
-    }
-
-    body.dark-theme .logs-pagination button {
-        background-color: #5d7fb9;
-    }
-
-    body.dark-theme .logs-pagination button:hover:not(:disabled) {
-        background-color: #4a6fa5;
-    }
-
-    body.dark-theme .logs-pagination span {
-        color: #999;
     }
 
     /* 悬浮提示样式 */
@@ -1051,30 +732,6 @@ const HTML_CONTENT = `
         z-index: 1000;
     }
     
-    /* 刷新状态按钮样式 */
-    #refresh-status-btn {
-        background-color: #3498db;
-    }
-    
-    #refresh-status-btn:hover {
-        background-color: #2980b9;
-    }
-    
-    #refresh-status-btn svg {
-        display: block;
-        margin: 0 auto;
-    }
-    
-    /* 刷新状态时的加载动画 */
-    @keyframes rotating {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
-    
-    .rotating {
-        animation: rotating 2s linear infinite;
-    }
-
     .floating-button-group button {
         width: 40px;
         height: 40px;
@@ -1733,11 +1390,6 @@ const HTML_CONTENT = `
             height: 32px;
             font-size: 16px;
         }
-        
-        #refresh-status-btn svg {
-            width: 16px;
-            height: 16px;
-        }
 
         #dialog-box {
             width: 90%;
@@ -2185,9 +1837,8 @@ const HTML_CONTENT = `
         <div class="center-content">
             <!-- 一言模块 -->
             <p id="hitokoto">
-                <a href="#" id="hitokoto_text"></a>
+                <span id="hitokoto_text">正在加载一言...</span>
             </p>
-            <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
             <!-- 搜索栏 -->
             <div class="search-container">
                 <div class="search-bar">
@@ -2251,11 +1902,6 @@ const HTML_CONTENT = `
                     <path d="M12 24l12-12 12 12m-24 12 12-12 12 12" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </button>
-            <button id="refresh-status-btn" onclick="refreshLinksStatus()" title="刷新链接状态" style="display: none;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
-                </svg>
-            </button>
             <button id="theme-toggle" onclick="toggleTheme()">◑</button>
         </div>
         <!-- 添加链接对话框 -->
@@ -2289,32 +1935,6 @@ const HTML_CONTENT = `
                 <div class="login-modal-buttons">
                     <button class="cancel" onclick="hideLoginModal()">取消</button>
                     <button onclick="performLogin()">确定</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- 日志弹窗 -->
-        <div id="logs-modal" class="login-modal" style="display: none;">
-            <div class="logs-modal-content">
-                <div class="logs-header">
-                    <h3>🔍 链接检测日志</h3>
-                    <button class="logs-close-btn" onclick="hideLogsModal()">✕</button>
-                </div>
-                <div class="logs-filters">
-                    <select id="logs-filter-type">
-                        <option value="all">全部类型</option>
-                        <option value="scheduled">定时任务</option>
-                        <option value="manual">手动检测</option>
-                    </select>
-                    <button onclick="loadLogs()" class="logs-refresh-btn">🔄 刷新</button>
-                </div>
-                <div class="logs-content" id="logs-content">
-                    <div class="logs-loading">加载中...</div>
-                </div>
-                <div class="logs-pagination">
-                    <button id="logs-prev-btn" onclick="prevLogsPage()" disabled>上一页</button>
-                    <span id="logs-page-info">第 1 页</span>
-                    <button id="logs-next-btn" onclick="nextLogsPage()">下一页</button>
                 </div>
             </div>
         </div>
@@ -2364,6 +1984,27 @@ const HTML_CONTENT = `
     <div id="custom-tooltip"></div>
 
     <script>
+    // 加载一言
+    async function loadHitokoto() {
+        try {
+            const response = await fetch('https://v1.hitokoto.cn/?encode=text');
+            const text = await response.text();
+            const hitokotoElement = document.getElementById('hitokoto_text');
+            if (hitokotoElement) {
+                hitokotoElement.textContent = text;
+            }
+        } catch (error) {
+            console.error('加载一言失败:', error);
+            const hitokotoElement = document.getElementById('hitokoto_text');
+            if (hitokotoElement) {
+                hitokotoElement.textContent = '加载失败';
+            }
+        }
+    }
+
+    // 页面加载时获取一言
+    loadHitokoto();
+
     // 搜索引擎配置
     const searchEngines = {
         baidu: "https://www.baidu.com/s?wd=",
@@ -2374,13 +2015,6 @@ const HTML_CONTENT = `
 
     let currentEngine = "baidu";
     let isShowingSearchResults = false;
-
-    // 日志记录函数
-    function logAction(action, details) {
-        const timestamp = new Date().toISOString();
-        const logEntry = timestamp + ': ' + action + ' - ' + JSON.stringify(details);
-        console.log(logEntry);
-    }
 
     // 设置当前搜索模式
     function setActiveEngine(engine) {
@@ -2400,7 +2034,6 @@ const HTML_CONTENT = `
             hideSearchResults();
         }
 
-        logAction('设置搜索模式', { mode: engine });
     }
 
     // 搜索引擎选择框变更事件
@@ -2439,7 +2072,6 @@ const HTML_CONTENT = `
             return;
         }
 
-        logAction('执行搜索', { engine: currentEngine, query });
         window.open(engineUrl + encodeURIComponent(query), '_blank');
     });
 
@@ -2490,10 +2122,8 @@ const HTML_CONTENT = `
             updateCategorySelect();
             renderSections();
             saveLinks();
-            logAction('添加分类', { categoryName, currentLinkCount: links.length });
         } else if (categories[categoryName]) {
             await customAlert('该分类已存在', '添加分类');
-            logAction('添加分类失败', { categoryName, reason: '分类已存在' });
         }
     }
 
@@ -2514,7 +2144,6 @@ const HTML_CONTENT = `
             renderSections();
             renderCategoryButtons();
             saveLinks();
-            logAction('删除分类', { category });
         }
     }
 
@@ -2553,7 +2182,6 @@ const HTML_CONTENT = `
         updateCategorySelect();
         saveLinks();
 
-        logAction('编辑分类名称', { oldName, newName });
     }
 
     // 移动分类
@@ -2585,7 +2213,6 @@ const HTML_CONTENT = `
         updateCategorySelect();
         saveLinks();
 
-        logAction('移动分类', { categoryName, direction });
     }
 
     // 切换分类编辑模式
@@ -2625,7 +2252,6 @@ const HTML_CONTENT = `
             console.log('分类编辑模式已关闭');
         }
 
-        logAction('切换分类编辑模式', { isEditCategoryMode });
     }
 
 
@@ -2646,7 +2272,6 @@ const HTML_CONTENT = `
             // 更新分类按钮的激活状态
             updateActiveCategoryButton(null);
             
-            logAction('收缩分类', { category: category });
             return;
         }
         
@@ -2703,7 +2328,6 @@ const HTML_CONTENT = `
         // 更新分类按钮的激活状态
         updateActiveCategoryButton(category);
         
-        logAction('加载分类卡片', { category: category });
     }
     
     // 更新分类按钮的激活状态
@@ -2868,7 +2492,6 @@ const HTML_CONTENT = `
                 behavior: 'smooth'
             });
 
-            logAction('滚动到分类', { category });
         }
     }
 
@@ -2895,7 +2518,6 @@ const HTML_CONTENT = `
                 throw new Error("HTTP error! status: " + response.status);
             }
 
-
             const data = await response.json();
             console.log('Received data:', data);
 
@@ -2905,21 +2527,11 @@ const HTML_CONTENT = `
 
             publicLinks = data.links ? data.links.filter(link => !link.isPrivate) : [];
             privateLinks = data.links ? data.links.filter(link => link.isPrivate) : [];
+            
+            // 更新全局 links 变量
             links = isLoggedIn ? [...publicLinks, ...privateLinks] : publicLinks;
-
-            renderSections();
-            updateCategorySelect();
-            updateUIState();
-            logAction('读取链接', {
-                publicCount: publicLinks.length,
-                privateCount: privateLinks.length,
-                isLoggedIn: isLoggedIn,
-                hasToken: !!localStorage.getItem('authToken')
-            });
         } catch (error) {
-            // 🔧 安全修复：避免泄露详细错误信息
-            console.error('Failed to load links');
-            console.error('加载链接时出错，请刷新页面重试');
+            console.error('加载链接失败:', error);
         }
     }
 
@@ -2954,7 +2566,6 @@ const HTML_CONTENT = `
         // 同时更新登录和设置按钮状态
         updateLoginButton();
 
-        logAction('更新UI状态', { isAdmin, isLoggedIn });
     }
 
     // 登录状态显示（加载所有链接）
@@ -2966,7 +2577,6 @@ const HTML_CONTENT = `
             document.querySelectorAll('.private-tag').forEach(tag => {
                 tag.style.display = 'block';
             });
-            logAction('显示私密花园');
         }
     }
 
@@ -3066,7 +2676,6 @@ const HTML_CONTENT = `
         // 渲染分类快捷按钮
         renderCategoryButtons();
 
-        logAction('渲染分类结构', { isAdmin: isAdmin, categoryCount: Object.keys(categories).length });
     }
 
     // 从URL中提取域名
@@ -3098,20 +2707,9 @@ const HTML_CONTENT = `
         card.dataset.isPrivate = link.isPrivate;
         card.setAttribute('data-url', link.url);
         
-        // 根据链接状态设置卡片样式
-        const status = link.status || 'ok';  // 默认为正常状态
-        
-        // 添加状态类
-        if (status === 'ok') {
-            card.classList.add('status-ok');
-            card.style.borderLeftColor = '#43b883';  // 绿色 - 正常
-        } else if (status === 'error') {
-            card.classList.add('status-error');
-            card.style.borderLeftColor = '#e74c3c';  // 红色 - 异常/失败
-        } else if (status === 'warning') {
-            card.classList.add('status-warning');
-            card.style.borderLeftColor = '#9b59b6';  // 紫色 - 警告
-        }
+        // 每次加载时都从待检测状态开始（紫色），通过 Favicon 加载来更新状态
+        card.classList.add('status-warning');
+        card.style.borderLeftColor = '#9b59b6';  // 紫色 - 待检测
 
         // 设置卡片动画延迟
         const cardIndex = container.children.length;
@@ -3131,23 +2729,70 @@ const HTML_CONTENT = `
         icon.className = 'card-icon';
 
         // 使用自定义图标或回退到favicon提取服务
-        icon.src = (
+        const isUsingFavicon = (
             !link.icon ||
             typeof link.icon !== 'string' ||
             !link.icon.trim() ||
             !isValidUrl(link.icon)
-        )
-            ? 'https://www.faviconextractor.com/favicon/' + extractDomain(link.url)
+        );
+        
+        const domain = extractDomain(link.url);
+        
+        // 使用 faviconextractor.com 的 Favicon 服务
+        icon.src = isUsingFavicon
+            ? 'https://www.faviconextractor.com/favicon/' + domain
             : link.icon;
 
         icon.alt = 'Website Icon';
 
-        // 如果图片加载失败，使用默认的 SVG 图标
+        // Favicon加载成功 - 标记为正常
+        icon.onload = function() {
+            if (isUsingFavicon) {
+                // Favicon 成功加载就认为网站正常
+                // （faviconextractor.com 如果网站无法访问会返回占位SVG，但也会成功加载）
+                // 因此需要检测是否是占位图
+                
+                // 等待图片完全加载后检查尺寸和内容
+                setTimeout(() => {
+                    // 检查图片的实际尺寸
+                    const width = this.naturalWidth;
+                    const height = this.naturalHeight;
+                    
+                    // faviconextractor 的占位SVG通常是 100x100
+                    // 真实 favicon 通常是 16x16, 32x32, 64x64 等
+                    if (width === 100 && height === 100) {
+                        // 很可能是占位图，标记为异常
+                        link.status = 'error';
+                        link.lastChecked = new Date().toISOString();
+                        card.classList.remove('status-warning', 'status-ok');
+                        card.classList.add('status-error');
+                        card.style.borderLeftColor = '#e74c3c'; // 红色
+                    } else {
+                        // 正常的 Favicon，标记为正常
+                        link.status = 'ok';
+                        link.lastChecked = new Date().toISOString();
+                        card.classList.remove('status-warning', 'status-error');
+                        card.classList.add('status-ok');
+                        card.style.borderLeftColor = '#43b883'; // 绿色
+                    }
+                }, 100);
+            }
+        };
+
+        // Favicon加载失败 - 标记为异常
         icon.onerror = function() {
+            if (isUsingFavicon) {
+                link.status = 'error';
+                link.lastChecked = new Date().toISOString();
+                card.classList.remove('status-warning', 'status-ok');
+                card.classList.add('status-error');
+                card.style.borderLeftColor = '#e74c3c'; // 红色
+            }
+            
+            // 使用默认的 SVG 图标
             const svgBlob = new Blob([defaultIconSVG], {type: 'image/svg+xml'});
             const svgUrl = URL.createObjectURL(svgBlob);
             this.src = svgUrl;
-
             this.onload = () => URL.revokeObjectURL(svgUrl);
         };
 
@@ -3183,7 +2828,6 @@ const HTML_CONTENT = `
         if (!isAdmin) {
             card.addEventListener('click', () => {
                 window.open(correctedUrl, '_blank');
-                logAction('打开链接', { name: link.name, url: correctedUrl });
             });
         }
 
@@ -3258,7 +2902,6 @@ const HTML_CONTENT = `
             categorySelect.appendChild(option);
         });
 
-        logAction('更新分类选择', { categoryCount: Object.keys(categories).length });
     }
 
     // 保存链接数据
@@ -3303,10 +2946,8 @@ const HTML_CONTENT = `
                 throw new Error('保存失败: ' + (result.message || '未知错误'));
             }
             
-            logAction('保存链接成功', { linkCount: allLinks.length, categoryCount: Object.keys(categories).length });
             console.log('保存链接成功，包含状态信息');
         } catch (error) {
-            logAction('保存链接失败', { error: error.message || 'Save operation failed' });
             console.error('保存链接失败，请重试:', error);
             showToast('保存链接失败: ' + (error.message || '请重试'));
         }
@@ -3385,7 +3026,6 @@ const HTML_CONTENT = `
         document.getElementById('private-checkbox').checked = false;
         hideAddDialog();
 
-        logAction('添加卡片', { name, url, tips, icon, category, isPrivate });
     }
 
     // 删除卡片
@@ -3417,7 +3057,6 @@ const HTML_CONTENT = `
 
         saveLinks();
 
-        logAction('删除卡片', { name, url, isPrivate });
     }
 
     // 拖拽卡片
@@ -3504,7 +3143,6 @@ const HTML_CONTENT = `
 
         draggedCard.classList.add('dragging');
         event.dataTransfer.effectAllowed = "move";
-        logAction('开始拖拽卡片', { name: draggedCard.querySelector('.card-title').textContent });
     }
 
     function dragOver(event) {
@@ -3567,7 +3205,6 @@ const HTML_CONTENT = `
     function dragEnd(event) {
         if (draggedCard) {
             draggedCard.classList.remove('dragging');
-            logAction('拖拽卡片结束');
         }
     }
 
@@ -3658,9 +3295,7 @@ const HTML_CONTENT = `
             if (!result.success) {
                 throw new Error('Failed to save order');
             }
-            logAction('保存卡片顺序', { publicCount: newPublicLinks.length, privateCount: newPrivateLinks.length, categoryCount: Object.keys(newCategories).length });
         } catch (error) {
-            logAction('保存顺序失败', { error: error.message });
             await customAlert('保存顺序失败，请重试', '保存失败');
         }
     }
@@ -3671,7 +3306,6 @@ const HTML_CONTENT = `
             container.innerHTML = '';
         });
         await loadLinks();
-        logAction('重新加载卡片（管理员模式）');
     }
 
     // 处理登录按钮点击
@@ -3718,10 +3352,8 @@ const HTML_CONTENT = `
                 hideLoginModal();
                 updateLoginButton();
                 await customAlert('登录成功！', '登录');
-                logAction('登录成功');
             } else {
                 await customAlert('密码错误', '登录失败');
-                logAction('登录失败', { reason: result.error || '密码错误' });
             }
         } catch (error) {
             // 🔧 安全修复：避免泄露详细错误信息
@@ -3740,164 +3372,18 @@ const HTML_CONTENT = `
         updateLoginButton();
         await customAlert('退出登录成功！', '退出登录');
         updateUIState();
-        logAction('退出登录');
     }
 
-    // 日志相关变量
-    let currentLogsPage = 1;
-    let totalLogsPages = 1;
-
-    // 显示日志弹窗
-    function showLogsModal() {
-        document.getElementById('logs-modal').style.display = 'flex';
-        loadLogs();
-    }
-
-    // 隐藏日志弹窗
-    function hideLogsModal() {
-        document.getElementById('logs-modal').style.display = 'none';
-    }
-
-    // 加载日志
-    async function loadLogs(page = 1) {
-        const logsContent = document.getElementById('logs-content');
-        logsContent.innerHTML = '<div class="logs-loading">加载中...</div>';
-
-        try {
-            const token = localStorage.getItem('authToken');
-            if (!token) {
-                logsContent.innerHTML = '<div class="logs-loading">请先登录</div>';
-                return;
-            }
-
-            const response = await fetch('/api/getLogs?page=' + page + '&pageSize=10', {
-                headers: {
-                    'Authorization': token
-                }
-            });
-
-            if (!response.ok) {
-                throw new Error('加载日志失败');
-            }
-
-            const data = await response.json();
-            console.log('日志数据:', data);
-            currentLogsPage = data.page;
-            totalLogsPages = data.totalPages;
-
-            if (!data.logs || data.logs.length === 0) {
-                logsContent.innerHTML = '<div class="logs-loading">暂无日志记录<br><small>提示：日志由定时任务自动生成，请等待定时任务运行或手动触发检测</small></div>';
-                return;
-            }
-
-            // 渲染日志
-            logsContent.innerHTML = data.logs.map(log => renderLogEntry(log)).join('');
-
-            // 更新分页按钮
-            document.getElementById('logs-prev-btn').disabled = currentLogsPage <= 1;
-            document.getElementById('logs-next-btn').disabled = currentLogsPage >= totalLogsPages;
-            document.getElementById('logs-page-info').textContent = '第 ' + currentLogsPage + '/' + totalLogsPages + ' 页';
-
-        } catch (error) {
-            console.error('加载日志失败:', error);
-            logsContent.innerHTML = '<div class="logs-loading">加载失败，请重试</div>';
-        }
-    }
-
-    // 渲染单条日志
-    function renderLogEntry(log) {
-        const time = new Date(log.timestamp).toLocaleString('zh-CN');
-        const duration = log.endTime ? 
-            Math.round((new Date(log.endTime) - new Date(log.timestamp)) / 1000) : 0;
-        const isError = log.summary && !log.summary.success;
-
-        let usersHtml = '';
-        if (log.users && log.users.length > 0) {
-            const userItems = log.users.map(function(user) {
-                let errorLinksHtml = '';
-                if (user.errorLinks && user.errorLinks.length > 0) {
-                    const errorLinkItems = user.errorLinks.map(function(link) {
-                        return '<div class="log-error-link">❌ ' + link.url + ': ' + link.error + '</div>';
-                    }).join('');
-                    errorLinksHtml = '<div class="log-error-links">' + errorLinkItems + '</div>';
-                }
-                
-                let statsHtml = '';
-                if (user.batchRange) {
-                    // 分批检测模式
-                    statsHtml = '📦 总计: ' + user.total + ' | ' +
-                        '🔍 本批: ' + user.checked + ' (' + user.batchRange + ') | ' +
-                        '➡️ 下次从: ' + user.nextCheckIndex + ' | ' +
-                        '<span class="ok">✅ ' + user.ok + '</span> | ' +
-                        '<span class="error">❌ ' + user.error + '</span> | ' +
-                        '💾 缓存: ' + user.cached;
-                } else {
-                    // 全量检测模式
-                    statsHtml = '总计: ' + user.total + ' | ' +
-                        '<span class="ok">正常: ' + user.ok + '</span> | ' +
-                        '<span class="error">异常: ' + user.error + '</span> | ' +
-                        '缓存: ' + user.cached;
-                }
-                
-                return '<div class="log-user-item">' +
-                    '<div class="log-user-name">' + user.userId + '</div>' +
-                    '<div class="log-user-stats">' + statsHtml + '</div>' +
-                    errorLinksHtml +
-                '</div>';
-            }).join('');
-            
-            usersHtml = '<div class="log-users">' + userItems + '</div>';
-        }
-
-        const durationText = duration > 0 ? '(耗时 ' + duration + '秒)' : '';
-        const typeText = log.type === 'scheduled' ? '定时任务' : '手动检测';
-        const summaryText = log.summary.message || (isError ? '❌ ' + log.summary.error : '✅ 检测完成');
-        const errorClass = isError ? 'error' : '';
-        
-        return '<div class="log-entry ' + errorClass + '">' +
-            '<div class="log-header-row">' +
-                '<span class="log-time">⏰ ' + time + ' ' + durationText + '</span>' +
-                '<span class="log-type ' + log.type + '">' + typeText + '</span>' +
-            '</div>' +
-            '<div class="log-summary">' + summaryText + '</div>' +
-            usersHtml +
-        '</div>';
-    }
-
-    // 上一页
-    function prevLogsPage() {
-        if (currentLogsPage > 1) {
-            loadLogs(currentLogsPage - 1);
-        }
-    }
-
-    // 下一页
-    function nextLogsPage() {
-        if (currentLogsPage < totalLogsPages) {
-            loadLogs(currentLogsPage + 1);
-        }
-    }
+    // 日志功能已删除
 
     // 更新按钮状态
     function updateLoginButton() {
         const loginBtn = document.getElementById('login-btn');
         const adminBtn = document.getElementById('admin-btn');
-        const logsBtn = document.getElementById('logs-btn');
-        const refreshStatusBtn = document.getElementById('refresh-status-btn');
 
         if (isLoggedIn) {
             loginBtn.textContent = '退出登录';
             adminBtn.style.display = 'inline-block';
-            if (logsBtn) {
-                logsBtn.style.display = 'inline-block';
-                console.log('日志按钮已显示');
-            } else {
-                console.warn('未找到日志按钮元素');
-            }
-            // 登录后显示刷新状态按钮
-            if (refreshStatusBtn) {
-                refreshStatusBtn.style.display = 'block';
-            }
             if (isAdmin) {
                 adminBtn.textContent = '离开设置';
             } else {
@@ -3906,20 +3392,12 @@ const HTML_CONTENT = `
         } else {
             loginBtn.textContent = '登录';
             adminBtn.style.display = 'none';
-            if (logsBtn) {
-                logsBtn.style.display = 'none';
-            }
-            // 未登录时隐藏刷新状态按钮
-            if (refreshStatusBtn) {
-                refreshStatusBtn.style.display = 'none';
-            }
         }
     }
 
     // 打开GitHub仓库
     function openGitHub() {
         window.open('https://github.com/hmhm2022/Card-Tab', '_blank');
-        logAction('访问GitHub仓库');
     }
 
     // 登录密码输入框回车事件
@@ -3956,13 +3434,11 @@ const HTML_CONTENT = `
                 });
                 const result = await response.json();
                 if (result.success) {
-                    logAction('数据备份成功');
                 } else {
                     throw new Error('备份失败');
                 }
             } catch (error) {
                 // 🔧 安全修复：避免泄露详细错误信息
-                logAction('数据备份失败', { error: 'Backup operation failed' });
                 hideLoading();
                 const confirmed = await customConfirm('备份失败，是否仍要继续进入设置模式？', '是', '否');
                 if (!confirmed) {
@@ -3975,7 +3451,6 @@ const HTML_CONTENT = `
                 isAdmin = true;
                 addRemoveControls.style.display = 'flex';
                 await reloadCardsAsAdmin();
-                logAction('进入设置');
                 hideLoading();
                 await customAlert('准备设置分类和书签', '设置模式');
             } finally {
@@ -3995,7 +3470,6 @@ const HTML_CONTENT = `
 
             addRemoveControls.style.display = 'none';
             await reloadCardsAsAdmin();
-            logAction('离开设置');
             await customAlert('设置已保存', '设置完成');
         }
 
@@ -4009,7 +3483,6 @@ const HTML_CONTENT = `
     function applyDarkTheme() {
         document.body.classList.add('dark-theme');
         isDarkTheme = true;
-        logAction('应用暗色主题');
     }
 
     // 全局变量用于管理对话框事件处理器
@@ -4056,7 +3529,6 @@ const HTML_CONTENT = `
         confirmBtn.addEventListener('click', currentConfirmHandler);
         cancelBtn.addEventListener('click', currentCancelHandler);
 
-        logAction('显示编辑链接对话框');
     }
 
     // 显示添加链接对话框
@@ -4103,7 +3575,6 @@ const HTML_CONTENT = `
             nameInput.focus();
         }, 50);
 
-        logAction('显示添加链接对话框');
     }
 
     // 更新链接
@@ -4167,9 +3638,7 @@ const HTML_CONTENT = `
             renderSections();
             hideAddDialog();
 
-            logAction('更新卡片', { oldUrl: oldLink.url, name, url, tips, icon, category, isPrivate });
         } catch (error) {
-            logAction('更新卡片失败:', error);
             await customAlert('更新卡片失败:' + error.message, '编辑卡片');
         }
     }
@@ -4194,7 +3663,6 @@ const HTML_CONTENT = `
         confirmBtn.onclick = null;
         cancelBtn.onclick = null;
 
-        logAction('隐藏添加链接对话框');
     }
 
     // 切换编辑卡片模式
@@ -4223,7 +3691,6 @@ const HTML_CONTENT = `
             }
         });
 
-        logAction('切换编辑卡片模式', { removeMode });
     }
 
 
@@ -4239,7 +3706,6 @@ const HTML_CONTENT = `
             document.body.classList.remove('dark-theme');
         }
 
-        logAction('切换主题', { isDarkTheme });
     }
 
     // 返回顶部
@@ -4248,7 +3714,6 @@ const HTML_CONTENT = `
             top: 0,
             behavior: 'smooth'
         });
-        logAction('返回顶部');
     }
 
     // 控制返回顶部按钮显示/隐藏
@@ -4470,157 +3935,8 @@ async function verifyPassword(inputPassword) {
     return result;
 }
 
-    // 刷新链接状态函数
-    async function refreshLinksStatus() {
-        try {
-            // 显示加载动画
-            const refreshBtn = document.getElementById('refresh-status-btn');
-            refreshBtn.classList.add('rotating');
-            console.log('开始刷新链接状态');
-            
-            // 如果没有链接，则创建一些测试链接
-            if ([...publicLinks, ...privateLinks].length === 0) {
-                console.log('没有现有链接，创建测试链接');
-                
-                // 创建一些测试链接
-                const testLinks = [
-                    { name: '百度', url: 'https://www.baidu.com', tips: '中国最大的搜索引擎', category: '常用', isPrivate: false, status: 'ok' },
-                    { name: 'Google', url: 'https://www.google.com', tips: '全球最大的搜索引擎', category: '常用', isPrivate: false, status: 'ok' },
-                    { name: 'GitHub', url: 'https://github.com', tips: '代码托管平台', category: '开发', isPrivate: false, status: 'ok' },
-                    { name: '无效链接测试', url: 'https://this-domain-does-not-exist-12345.com', tips: '用于测试错误状态', category: '测试', isPrivate: false, status: 'ok' }
-                ];
-                
-                // 更新本地链接数据
-                publicLinks = testLinks;
-                privateLinks = [];
-                
-                // 更新分类数据
-                categories = { '常用': [], '开发': [], '测试': [] };
-                
-                // 保存链接数据
-                await saveLinks();
-                
-                // 重新渲染卡片
-                renderSections();
-                
-                // 显示提示
-                showToast('已创建测试链接，请再次刷新状态');
-                return;
-            }
-            
-            // 使用新的Worker端API进行链接状态检测
-            // 使用与 saveLinks 相同的 userId
-            const userId = 'testUser';
-            
-            console.log('调用 /api/refreshLinkStatus 进行状态检测，userId:', userId);
-            
-            // 调用新的刷新状态API
-            // forceCheck: false 使用智能缓存，可以检测更多链接
-            const response = await fetch('/api/refreshLinkStatus', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ 
-                    userId: userId,
-                    forceCheck: false  // 使用智能缓存模式
-                })
-            });
-            
-            if (!response.ok) {
-                throw new Error('刷新状态失败: ' + response.status);
-            }
-            
-            const result = await response.json();
-            console.log('刷新状态结果:', result);
-            
-            if (result.success) {
-                // 重新获取更新后的链接数据
-                const authToken = localStorage.getItem('authToken') || '';
-                const headers = {};
-                if (authToken) {
-                    headers['Authorization'] = authToken;
-                }
-                
-                const getResponse = await fetch('/api/getLinks?userId=' + encodeURIComponent(userId), { headers });
-                
-                if (getResponse.ok) {
-                    const data = await getResponse.json();
-                    console.log('获取到更新后的数据:', data);
-                    
-                    // 更新本地数据
-                    if (data.links && data.links.length > 0) {
-                        // 如果是登录状态，更新所有链接
-                        if (isLoggedIn) {
-                            publicLinks = data.links.filter(link => !link.isPrivate);
-                            privateLinks = data.links.filter(link => link.isPrivate);
-                        } else {
-                            // 非登录状态，只更新公开链接
-                            publicLinks = data.links;
-                            privateLinks = [];
-                        }
-                        
-                        // 重新渲染卡片
-                        renderSections();
-                        
-                        // 如果有激活分类，重新加载该分类的卡片
-                        if (activeCategory) {
-                            loadCategoryCards(activeCategory);
-                        }
-                    }
-                }
-                
-                // 显示详细的检测结果
-                if (result.stats) {
-                    const stats = result.stats;
-                    let message = '检测完成! ';
-                    message += '总计: ' + stats.total + ' | ';
-                    message += '检测: ' + stats.checked + ' | ';
-                    message += '正常: ' + stats.ok + ' | ';
-                    message += '异常: ' + stats.error;
-                    
-                    if (stats.skipped > 0) {
-                        message += ' | ⚠️ 跳过: ' + stats.skipped;
-                    }
-                    
-                    if (stats.cached > 0) {
-                        message += ' | 缓存: ' + stats.cached;
-                    }
-                    
-                    if (result.duration) {
-                        message += ' | 耗时: ' + (result.duration / 1000).toFixed(1) + 's';
-                    }
-                    
-                    showToast(message);
-                    
-                    // 如果有部分检测的警告
-                    if (result.isPartialCheck) {
-                        console.warn('⚠️ 由于 Cloudflare Workers 限制（最多 50 个子请求），仅检测了前 45 个链接');
-                        console.warn('建议：减少链接数量，或使用智能缓存模式（forceCheck: false）');
-                    }
-                    
-                    // 如果有错误详情，在控制台输出
-                    if (result.errorDetails && result.errorDetails.length > 0) {
-                        console.log('错误详情:', result.errorDetails);
-                    }
-                } else {
-                    // 兼容旧格式
-                    const message = '链接状态检查完成！检查了 ' + (result.checkedCount || 0) + ' 个链接，正常: ' + (result.okCount || 0) + ' 个，异常: ' + (result.errorCount || 0) + ' 个';
-                    showToast(message);
-                }
-            } else {
-                throw new Error(result.message || '刷新状态失败');
-            }
-            
-        } catch (error) {
-            console.error('刷新链接状态失败:', error);
-            showToast('刷新链接状态失败: ' + error.message);
-        } finally {
-            // 移除加载动画
-            const refreshBtn = document.getElementById('refresh-status-btn');
-            refreshBtn.classList.remove('rotating');
-        }
-    }
+    // 链接状态检测已集成到卡片加载时的 Favicon 加载中
+    // 通过判断 Favicon 图片尺寸（100x100为占位图）来自动更新状态
     
     // 显示提示消息
     function showToast(message, duration = 3000) {
@@ -4668,6 +3984,9 @@ async function verifyPassword(inputPassword) {
             await validateToken();
             updateLoginButton();
             await loadLinks();
+            
+            // 渲染分类和链接
+            renderSections();
             
             // 初始加载完成后，如果是管理员模式显示所有分类，否则保持分类收缩
             setTimeout(() => {
@@ -4718,6 +4037,8 @@ async function verifyPassword(inputPassword) {
             
             // 初始化返回顶部按钮状态
             setTimeout(handleBackToTopVisibility, 100);
+            
+            // 链接状态会在卡片加载时通过 Favicon 自动检测，无需手动调用
         } catch (error) {
             // 🔧 安全修复：避免泄露详细错误信息
             console.error('Initialization failed');
@@ -4994,11 +4315,6 @@ async function verifyPassword(inputPassword) {
             adminBtn.onclick = toggleAdminMode;
         }
         
-        // 绑定日志按钮事件
-        const logsBtn = document.getElementById('logs-btn');
-        if (logsBtn) {
-            logsBtn.onclick = showLogsModal;
-        }
     });
 
     </script>
@@ -5009,7 +4325,6 @@ async function verifyPassword(inputPassword) {
             <span class="site-title">柒蓝导航</span>
             <p>&copy; 2025 <a href="https://github.com/qilan28/Card-Tab" target="_blank">Card-Tab</a></p>
             <div class="buttons-group">
-                <button class="admin-btn" id="logs-btn" style="display: none;">📊 日志</button>
                 <button class="admin-btn" id="admin-btn" style="display: none;">设置</button>
                 <button class="login-btn" id="login-btn">登录</button>
             </div>
@@ -5106,725 +4421,20 @@ async function validateAdminToken(authToken, env) {
     };
 }
 
-// ==================== 新的链接状态检测系统 ====================
 
-/**
- * 提取域名用于 favicon 检测
- */
-function extractDomainForFavicon(url) {
-    try {
-        const urlObj = new URL(url.startsWith('http') ? url : 'https://' + url);
-        return urlObj.hostname;
-    } catch {
-        return null;
-    }
-}
 
-/**
- * 检查单个链接的状态
- * @param {string} url - 要检查的URL
- * @param {object} options - 检测选项
- * @returns {Promise<object>} 检测结果
- */
-async function checkLinkStatus(url, options = {}) {
-    const {
-        timeout = 5000,           // 超时时间（毫秒）
-        maxRetries = 1,           // 最大重试次数
-        retryDelay = 500,         // 重试延迟（毫秒）
-        followRedirects = true,   // 是否跟随重定向
-        checkFaviconFirst = true, // 是否先检测 favicon - 默认启用
-        faviconTimeout = 3000     // Favicon检测超时（毫秒）- 更短的超时
-    } = options;
-    
-    // 规范化URL
-    let normalizedUrl = url;
-    if (!url.startsWith('http://') && !url.startsWith('https://')) {
-        normalizedUrl = 'https://' + url;
-    }
-    
-    // 验证URL格式
-    let urlObj;
-    try {
-        urlObj = new URL(normalizedUrl);
-    } catch (urlError) {
-        return {
-            url: url,
-            status: 0,
-            isOk: false,
-            error: 'INVALID_URL',
-            errorMessage: '无效的URL格式',
-            checkedAt: new Date().toISOString()
-        };
-    }
-    
-    // 策略1: 优先使用 Favicon 检测（最快速、最可靠）
-    if (checkFaviconFirst) {
-        const domain = extractDomainForFavicon(normalizedUrl);
-        if (domain) {
-            // 使用多个Favicon服务作为备选
-            const faviconServices = [
-                `https://www.google.com/s2/favicons?domain=${domain}&sz=32`,
-                `https://favicon.im/${domain}`,
-                `https://www.faviconextractor.com/favicon/${domain}`
-            ];
-            
-            // 尝试第一个服务（Google Favicon服务最可靠）
-            try {
-                const faviconResult = await performQuickCheck(faviconServices[0], faviconTimeout);
-                
-                // 如果 favicon 可以访问，认为网站正常
-                if (faviconResult.isOk) {
-                    return {
-                        url: url,
-                        status: 200,
-                        isOk: true,
-                        statusText: 'OK (Favicon)',
-                        checkMethod: 'favicon',
-                        checkedAt: new Date().toISOString()
-                    };
-                }
-            } catch (faviconError) {
-                // Google服务失败，尝试备用服务
-                try {
-                    const faviconResult2 = await performQuickCheck(faviconServices[1], faviconTimeout);
-                    if (faviconResult2.isOk) {
-                        return {
-                            url: url,
-                            status: 200,
-                            isOk: true,
-                            statusText: 'OK (Favicon)',
-                            checkMethod: 'favicon',
-                            checkedAt: new Date().toISOString()
-                        };
-                    }
-                } catch (error2) {
-                    // 所有Favicon服务都失败，降级到直接检测
-                }
-            }
-        }
-    }
-    
-    // 策略2: 检测网站本身（带重试）
-    let lastError = null;
-    for (let attempt = 0; attempt <= maxRetries; attempt++) {
-        try {
-            const result = await performCheck(normalizedUrl, timeout, followRedirects);
-            
-            // 如果成功，直接返回
-            if (result.isOk) {
-                return {
-                    ...result,
-                    url: url,
-                    attempts: attempt + 1,
-                    checkMethod: 'direct',
-                    checkedAt: new Date().toISOString()
-                };
-            }
-            
-            // 如果是明确的HTTP错误状态码（4xx, 5xx），也返回
-            if (result.status >= 400) {
-                return {
-                    ...result,
-                    url: url,
-                    attempts: attempt + 1,
-                    checkMethod: 'direct',
-                    checkedAt: new Date().toISOString()
-                };
-            }
-            
-            lastError = result;
-        } catch (error) {
-            lastError = {
-                status: 0,
-                isOk: false,
-                error: 'NETWORK_ERROR',
-                errorMessage: error.message
-            };
-        }
-        
-        // 如果不是最后一次尝试，等待后重试
-        if (attempt < maxRetries) {
-            await sleep(retryDelay);
-        }
-    }
-    
-    // 所有重试都失败
-    return {
-        ...lastError,
-        url: url,
-        attempts: maxRetries + 1,
-        checkMethod: 'direct',
-        checkedAt: new Date().toISOString()
-    };
-}
-
-/**
- * 快速检测（用于 favicon 检测）
- */
-async function performQuickCheck(url, timeout) {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), timeout);
-    
-    try {
-        const response = await fetch(url, {
-            method: 'HEAD',
-            signal: controller.signal,
-            redirect: 'follow',
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-            }
-        });
-        
-        clearTimeout(timeoutId);
-        
-        const isOk = response.status >= 200 && response.status < 400;
-        
-        return {
-            status: response.status,
-            isOk: isOk,
-            statusText: response.statusText || getStatusText(response.status)
-        };
-    } catch (error) {
-        clearTimeout(timeoutId);
-        
-        return {
-            status: 0,
-            isOk: false,
-            error: error.name === 'AbortError' ? 'TIMEOUT' : 'NETWORK_ERROR',
-            errorMessage: error.message
-        };
-    }
-}
-
-/**
- * 执行实际的HTTP检测
- */
-async function performCheck(url, timeout, followRedirects) {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), timeout);
-    
-    try {
-        // 先尝试HEAD请求
-        // 使用更真实的浏览器 User-Agent 来避免被反爬虫系统拦截
-        let response = await fetch(url, {
-            method: 'HEAD',
-            signal: controller.signal,
-            redirect: followRedirects ? 'follow' : 'manual',
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-                'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
-                'Cache-Control': 'no-cache',
-                'Sec-Fetch-Dest': 'document',
-                'Sec-Fetch-Mode': 'navigate',
-                'Sec-Fetch-Site': 'none'
-            }
-        });
-        
-        clearTimeout(timeoutId);
-        
-        // 某些服务器不支持HEAD，返回405或501
-        if (response.status === 405 || response.status === 501) {
-            // 降级为GET请求
-            const controller2 = new AbortController();
-            const timeoutId2 = setTimeout(() => controller2.abort(), timeout);
-            
-            try {
-                response = await fetch(url, {
-                    method: 'GET',
-                    signal: controller2.signal,
-                    redirect: followRedirects ? 'follow' : 'manual',
-                    headers: {
-                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-                        'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
-                        'Cache-Control': 'no-cache',
-                        'Sec-Fetch-Dest': 'document',
-                        'Sec-Fetch-Mode': 'navigate',
-                        'Sec-Fetch-Site': 'none'
-                    }
-                });
-                clearTimeout(timeoutId2);
-            } catch (getError) {
-                clearTimeout(timeoutId2);
-                throw getError;
-            }
-        }
-        
-        // 判断状态
-        const isOk = response.status >= 200 && response.status < 400;
-        
-        return {
-            status: response.status,
-            isOk: isOk,
-            statusText: response.statusText || getStatusText(response.status),
-            responseTime: Date.now()
-        };
-        
-    } catch (error) {
-        clearTimeout(timeoutId);
-        
-        if (error.name === 'AbortError') {
-            return {
-                status: 0,
-                isOk: false,
-                error: 'TIMEOUT',
-                errorMessage: '请求超时'
-            };
-        }
-        
-        // 检查是否是CORS或SSL错误
-        const errorMsg = error.message || '';
-        if (errorMsg.includes('CORS') || errorMsg.includes('cross-origin')) {
-            // CORS错误通常意味着网站存在但有跨域限制
-            // 在Cloudflare Workers中，这可能表示网站正常
-            return {
-                status: 200,
-                isOk: true,
-                statusText: 'OK (CORS限制)',
-                error: 'CORS',
-                errorMessage: 'CORS限制，但网站可能正常'
-            };
-        }
-        
-        if (errorMsg.includes('SSL') || errorMsg.includes('certificate')) {
-            return {
-                status: 0,
-                isOk: false,
-                error: 'SSL_ERROR',
-                errorMessage: 'SSL证书错误'
-            };
-        }
-        
-        // 其他网络错误
-        return {
-            status: 0,
-            isOk: false,
-            error: 'NETWORK_ERROR',
-            errorMessage: error.message || '网络连接失败'
-        };
-    }
-}
-
-/**
- * 获取HTTP状态码的文本描述
- */
-function getStatusText(status) {
-    const statusTexts = {
-        200: 'OK',
-        201: 'Created',
-        204: 'No Content',
-        301: 'Moved Permanently',
-        302: 'Found',
-        304: 'Not Modified',
-        400: 'Bad Request',
-        401: 'Unauthorized',
-        403: 'Forbidden',
-        404: 'Not Found',
-        405: 'Method Not Allowed',
-        408: 'Request Timeout',
-        500: 'Internal Server Error',
-        502: 'Bad Gateway',
-        503: 'Service Unavailable',
-        504: 'Gateway Timeout'
-    };
-    return statusTexts[status] || 'Unknown';
-}
-
-/**
- * 睡眠函数
- */
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-/**
- * 批量检查所有链接状态
- * @param {Array} links - 链接数组
- * @param {object} options - 检测选项
- * @returns {Promise<object>} 检测结果映射
- */
-async function checkAllLinksStatus(links, options = {}) {
-    const {
-        concurrency = 2,          // 并发数量 - 降低到2避免Workers限制
-        batchDelay = 1000,        // 批次间延迟（毫秒）- 增加到1秒
-        timeout = 5000,           // 单个请求超时
-        maxRetries = 1,           // 最大重试次数
-        onProgress = null,        // 进度回调函数
-        maxLinks = 40             // 单次最多检测链接数（避免超过Workers限制）
-    } = options;
-    
-    const results = {};
-    let total = links.length;
-    let completed = 0;
-    
-    // 如果没有链接，直接返回
-    if (total === 0) {
-        return results;
-    }
-    
-    // 限制单次检测的链接数，避免超过Workers子请求限制
-    if (links.length > maxLinks) {
-        console.log(`链接数量超过限制，只检测前 ${maxLinks} 个链接`);
-        links = links.slice(0, maxLinks);
-        total = links.length;
-    }
-    
-    // 分批处理
-    const batches = [];
-    for (let i = 0; i < links.length; i += concurrency) {
-        batches.push(links.slice(i, i + concurrency));
-    }
-    
-    console.log(`开始检测 ${total} 个链接，分为 ${batches.length} 个批次，每批 ${concurrency} 个`);
-    
-    // 逐批检查
-    for (let batchIndex = 0; batchIndex < batches.length; batchIndex++) {
-        const batch = batches[batchIndex];
-        
-        console.log(`正在检测第 ${batchIndex + 1}/${batches.length} 批，包含 ${batch.length} 个链接`);
-        
-        // 并发检查当前批次
-        const batchPromises = batch.map(async (link) => {
-            try {
-                const result = await checkLinkStatus(link.url, {
-                    timeout,
-                    maxRetries,
-                    followRedirects: true,
-                    checkFaviconFirst: true  // 启用 favicon 优先检测
-                });
-                
-                results[link.url] = result;
-                completed++;
-                
-                // 调用进度回调
-                if (onProgress && typeof onProgress === 'function') {
-                    onProgress({
-                        completed,
-                        total,
-                        percentage: Math.round((completed / total) * 100),
-                        currentUrl: link.url,
-                        currentResult: result
-                    });
-                }
-                
-                return result;
-            } catch (error) {
-                // 单个链接检测失败，记录错误但不中断整体流程
-                console.error(`检测失败: ${link.url}, 错误: ${error.message}`);
-                
-                const errorResult = {
-                    url: link.url,
-                    status: 0,
-                    isOk: false,
-                    error: 'CHECK_FAILED',
-                    errorMessage: error.message || '检测失败',
-                    checkedAt: new Date().toISOString()
-                };
-                
-                results[link.url] = errorResult;
-                completed++;
-                
-                if (onProgress && typeof onProgress === 'function') {
-                    onProgress({
-                        completed,
-                        total,
-                        percentage: Math.round((completed / total) * 100),
-                        currentUrl: link.url,
-                        currentResult: errorResult
-                    });
-                }
-                
-                return errorResult;
-            }
-        });
-        
-        // 等待当前批次完成
-        await Promise.all(batchPromises);
-        
-        console.log(`第 ${batchIndex + 1} 批完成，已完成 ${completed}/${total}`);
-        
-        // 批次间延迟，避免过载和超过Workers限制
-        if (batchIndex < batches.length - 1 && batchDelay > 0) {
-            console.log(`等待 ${batchDelay}ms 后继续下一批...`);
-            await sleep(batchDelay);
-        }
-    }
-    
-    console.log(`所有检测完成，总计 ${total} 个链接`);
-    
-    return results;
-}
-
-/**
- * 智能检查链接状态（带缓存）
- * 如果链接最近检查过且状态正常，可以跳过检查
- */
-async function smartCheckLinks(links, options = {}) {
-    const {
-        cacheValidDuration = 1800000,  // 缓存有效期（30分钟，匹配定时任务间隔）
-        forceCheck = false              // 强制检查所有链接
-    } = options;
-    
-    const now = Date.now();
-    const linksToCheck = [];
-    const cachedResults = {};
-    
-    // 筛选需要检查的链接
-    for (const link of links) {
-        if (forceCheck) {
-            linksToCheck.push(link);
-        } else {
-            // 检查是否有有效缓存
-            const lastChecked = link.lastChecked ? new Date(link.lastChecked).getTime() : 0;
-            const cacheAge = now - lastChecked;
-            
-            if (link.status === 'ok' && cacheAge < cacheValidDuration) {
-                // 使用缓存结果
-                cachedResults[link.url] = {
-                    url: link.url,
-                    status: link.statusCode || 200,
-                    isOk: true,
-                    statusText: 'OK (Cached)',
-                    cached: true,
-                    checkedAt: link.lastChecked
-                };
-            } else {
-                // 需要重新检查
-                linksToCheck.push(link);
-            }
-        }
-    }
-    
-    // 检查需要更新的链接
-    const freshResults = await checkAllLinksStatus(linksToCheck, options);
-    
-    // 合并结果
-    return {
-        ...cachedResults,
-        ...freshResults
-    };
-}
-
-/**
- * 保存检测日志到KV
- */
-async function saveLog(env, logEntry) {
-    try {
-        // 获取现有日志列表
-        const logsData = await env.CARD_ORDER.get('check_logs');
-        let logs = logsData ? JSON.parse(logsData) : [];
-        
-        // 添加新日志
-        logs.unshift(logEntry);
-        
-        // 只保留最近100条日志
-        if (logs.length > 100) {
-            logs = logs.slice(0, 100);
-        }
-        
-        // 保存回 KV
-        await env.CARD_ORDER.put('check_logs', JSON.stringify(logs));
-        console.log(`日志已保存: ${logEntry.id}`);
-    } catch (error) {
-        console.error('保存日志失败:', error.message);
-    }
-}
+// 日志功能已完全删除
 
 export default {
-    // 定时触发处理函数（Cron Triggers）
-    // 自动定期检查所有用户的链接状态
+    // 定时触发处理函数已禁用（链接状态检测改为浏览器端进行）
     async scheduled(event, env, ctx) {
-        const startTime = new Date().toISOString();
-        console.log('定时任务触发:', startTime);
-        
-        // 初始化日志记录
-        const logEntry = {
-            id: `log_${Date.now()}`,
-            timestamp: startTime,
-            type: 'scheduled',
-            users: [],
-            summary: {}
-        };
-        
-        try {
-            // 获取所有用户ID
-            const userIds = await env.CARD_ORDER.list();
-            let totalChecked = 0;
-            let totalUsers = 0;
-            
-            // 对每个用户的链接进行状态检查
-            const BATCH_SIZE = 25;  // 每批检测25个链接（降低以避免子请求限制）
-            
-            for (const userId of userIds.keys) {
-                try {
-                    // 获取用户数据
-                    const userData = await env.CARD_ORDER.get(userId.name);
-                    if (!userData) continue;
-                    
-                    const parsedData = JSON.parse(userData);
-                    const allLinks = parsedData.links || [];
-                    
-                    if (allLinks.length === 0) continue;
-                    
-                    // 获取上次检测的批次位置（默认从0开始）
-                    const lastCheckIndex = parsedData.lastCheckIndex || 0;
-                    const totalLinks = allLinks.length;
-                    
-                    // 计算本次检测的范围
-                    let startIndex = lastCheckIndex;
-                    let endIndex = Math.min(startIndex + BATCH_SIZE, totalLinks);
-                    
-                    // 如果已经检测完所有链接，从头开始
-                    if (startIndex >= totalLinks) {
-                        startIndex = 0;
-                        endIndex = Math.min(BATCH_SIZE, totalLinks);
-                    }
-                    
-                    // 获取本批次要检测的链接
-                    const linksToCheck = allLinks.slice(startIndex, endIndex);
-                    
-                    console.log(`检查用户 ${userId.name}: 总计 ${totalLinks} 个链接，本批次检测 ${startIndex}-${endIndex} (共 ${linksToCheck.length} 个)`);
-                    
-                    // 使用智能缓存模式检测本批次链接
-                    // 关键：降低并发数和增加延迟，避免触发子请求限制
-                    const results = await smartCheckLinks(linksToCheck, {
-                        cacheValidDuration: 1200000,  // 20分钟缓存（匹配定时任务间隔）
-                        forceCheck: false,
-                        concurrency: 1,               // 降低到1（串行检测）
-                        timeout: 4000,                // 降低超时时间
-                        maxRetries: 0,                // 不重试，避免额外请求
-                        batchDelay: 1500,             // 增加批次延迟到1.5秒
-                        checkFaviconFirst: true,
-                        faviconTimeout: 2500,
-                        maxLinks: BATCH_SIZE
-                    });
-                    
-                    // 统计检测结果
-                    let okCount = 0;
-                    let errorCount = 0;
-                    let cachedCount = 0;
-                    
-                    // 只更新本批次检测的链接状态
-                    for (let i = startIndex; i < endIndex; i++) {
-                        const link = allLinks[i];
-                        const result = results[link.url];
-                        if (result) {
-                            link.status = result.isOk ? 'ok' : 'error';
-                            link.lastChecked = result.checkedAt || new Date().toISOString();
-                            link.statusCode = result.status;
-                            link.statusText = result.statusText;
-                            link.statusError = result.errorMessage || null;
-                            
-                            if (result.cached) {
-                                cachedCount++;
-                            }
-                            
-                            if (result.isOk) {
-                                okCount++;
-                            } else {
-                                errorCount++;
-                            }
-                        }
-                    }
-                    
-                    // 更新最后检查时间和下次检测的起始位置
-                    parsedData.lastStatusCheck = Date.now();
-                    
-                    // 计算下次检测的起始位置
-                    const nextCheckIndex = endIndex >= totalLinks ? 0 : endIndex;
-                    parsedData.lastCheckIndex = nextCheckIndex;
-                    
-                    // 保存更新后的数据
-                    await env.CARD_ORDER.put(userId.name, JSON.stringify(parsedData));
-                    
-                    totalChecked += linksToCheck.length;
-                    totalUsers++;
-                    
-                    const batchInfo = nextCheckIndex === 0 ? '(本轮检测完成，下次从头开始)' : '(下次从第 ' + nextCheckIndex + ' 个开始)';
-                    console.log(`用户 ${userId.name} 检查完成: 本批次 ${startIndex}-${endIndex}/${totalLinks}, 正常 ${okCount}, 异常 ${errorCount}, 缓存 ${cachedCount} ${batchInfo}`);
-                    
-                    // 输出前5个异常链接用于调试
-                    const errorLinks = allLinks.filter(link => link.status === 'error').slice(0, 5);
-                    if (errorLinks.length > 0) {
-                        console.log('异常链接示例:');
-                        errorLinks.forEach(link => {
-                            console.log(`  - ${link.url}: ${link.statusError || '未知错误'}`);
-                        });
-                    }
-                    
-                    // 记录用户检测日志
-                    logEntry.users.push({
-                        userId: userId.name,
-                        total: allLinks.length,
-                        checked: linksToCheck.length,
-                        batchRange: startIndex + '-' + endIndex,
-                        nextCheckIndex: nextCheckIndex,
-                        ok: okCount,
-                        error: errorCount,
-                        cached: cachedCount,
-                        errorLinks: errorLinks.map(link => ({
-                            url: link.url,
-                            error: link.statusError || '未知错误'
-                        }))
-                    });
-                    
-                    // 用户间延迟，避免累积子请求
-                    if (totalUsers > 0) {
-                        console.log('等待2秒后处理下一个用户...');
-                        await new Promise(resolve => setTimeout(resolve, 2000));
-                    }
-                    
-                } catch (userError) {
-                    console.error(`检查用户 ${userId.name} 失败:`, userError.message);
-                    // 继续处理下一个用户
-                }
-            }
-            
-            const message = '定时检查完成: ' + totalUsers + ' 个用户, 本批次检测 ' + totalChecked + ' 个链接';
-            console.log(message);
-            
-            // 完善日志记录
-            logEntry.endTime = new Date().toISOString();
-            logEntry.summary = {
-                totalUsers,
-                totalLinks: totalChecked,
-                batchCheck: true,
-                success: true,
-                message
-            };
-            
-            // 保存日志到KV
-            await saveLog(env, logEntry);
-            
-            return new Response(JSON.stringify({ 
-                success: true, 
-                message: message,
-                totalUsers: totalUsers,
-                totalLinks: totalChecked
-            }), {
-                headers: { 'Content-Type': 'application/json' }
-            });
-            
-        } catch (error) {
-            console.error('定时任务失败:', error);
-            
-            // 记录错误日志
-            logEntry.endTime = new Date().toISOString();
-            logEntry.summary = {
-                success: false,
-                error: error.message
-            };
-            await saveLog(env, logEntry);
-            
-            return new Response(JSON.stringify({ 
-                success: false,
-                error: error.message 
-            }), {
-                status: 500,
-                headers: { 'Content-Type': 'application/json' }
-            });
-        }
+        console.log('定时任务已禁用，链接状态检测改为浏览器端进行');
+        return new Response(JSON.stringify({ 
+            success: true, 
+            message: '定时任务已禁用，链接状态检测改为浏览器端进行'
+        }), {
+            headers: { 'Content-Type': 'application/json' }
+        });
     },
     
     async fetch(request, env) {
@@ -5841,79 +4451,13 @@ export default {
       if (url.pathname === '/api/getLinks') {
         const userId = url.searchParams.get('userId');
         const authToken = request.headers.get('Authorization');
-        const shouldCheckStatus = url.searchParams.get('checkStatus') === 'true';
         const data = await env.CARD_ORDER.get(userId);
 
         if (data) {
             const parsedData = JSON.parse(data);
             
-            // 检查是否需要更新链接状态
-            const now = Date.now();
-            const lastChecked = parsedData.lastStatusCheck || 0;
-            const checkInterval = 3600000; // 1小时检查一次
-            
-            // 只在明确请求时才检查状态，避免自动检查导致超时
-            // 定时任务会定期更新状态，前端不需要频繁触发
-            if (shouldCheckStatus && (now - lastChecked > checkInterval)) {
-                // 获取所有链接
-                const allLinks = parsedData.links || [];
-                
-                // 检查所有链接状态
-                if (allLinks.length > 0) {
-                    // 使用智能缓存模式，避免每次都检查所有链接
-                    const results = await smartCheckLinks(allLinks, {
-                        cacheValidDuration: 3600000,  // 1小时缓存
-                        forceCheck: false,
-                        concurrency: 2,               // 降低到2
-                        timeout: 5000,
-                        maxRetries: 1,
-                        batchDelay: 1000,             // 1秒延迟
-                        checkFaviconFirst: true,
-                        faviconTimeout: 3000,
-                        maxLinks: 40                  // 限制最多40个
-                    });
-                    
-                    // 更新链接状态
-                    let updatedCount = 0;
-                    let okCount = 0;
-                    let errorCount = 0;
-                    
-                    for (const link of allLinks) {
-                        const result = results[link.url];
-                        if (result) {
-                            link.status = result.isOk ? 'ok' : 'error';
-                            link.lastChecked = result.checkedAt || new Date().toISOString();
-                            link.statusCode = result.status;
-                            link.statusText = result.statusText;
-                            link.statusError = result.errorMessage || null;
-                            updatedCount++;
-                            
-                            if (result.isOk) {
-                                okCount++;
-                            } else {
-                                errorCount++;
-                                console.log(`链接检测失败: ${link.url}, 错误: ${result.errorMessage}`);
-                            }
-                        } else {
-                            // 如果没有检测结果，保持原有状态或设置为默认状态
-                            if (!link.status) {
-                                link.status = 'ok';
-                                link.lastChecked = new Date().toISOString();
-                            }
-                        }
-                    }
-                    
-                    console.log(`前端检测完成: 总计 ${allLinks.length}, 更新 ${updatedCount}, 正常 ${okCount}, 异常 ${errorCount}`);
-                    
-                    // 更新最后检查时间
-                    parsedData.lastStatusCheck = now;
-                    
-                    // 保存更新后的数据
-                    await env.CARD_ORDER.put(userId, JSON.stringify(parsedData));
-                }
-            }
-
-            // 确保所有链接都有默认状态（即使没有检测）
+            // 服务端不再进行链接状态检测，状态检测改为浏览器端进行
+            // 确保所有链接都有默认状态
             const allLinks = parsedData.links || [];
             for (const link of allLinks) {
                 if (!link.status) {
@@ -5962,48 +4506,6 @@ export default {
             status: 200,
             headers: { 'Content-Type': 'application/json' }
         });
-      }
-
-      // 获取检测日志
-      if (url.pathname === '/api/getLogs') {
-        const authToken = request.headers.get('Authorization');
-        
-        // 验证token（只有管理员可以查看日志）
-        const validation = await validateServerToken(authToken, env);
-        if (!validation.isValid) {
-            return new Response(JSON.stringify({ error: '需要管理员权限' }), {
-                status: 401,
-                headers: { 'Content-Type': 'application/json' }
-            });
-        }
-        
-        try {
-            // 获取日志数据
-            const logsData = await env.CARD_ORDER.get('check_logs');
-            const logs = logsData ? JSON.parse(logsData) : [];
-            
-            // 支持分页
-            const page = parseInt(url.searchParams.get('page') || '1');
-            const pageSize = parseInt(url.searchParams.get('pageSize') || '20');
-            const start = (page - 1) * pageSize;
-            const end = start + pageSize;
-            
-            return new Response(JSON.stringify({
-                logs: logs.slice(start, end),
-                total: logs.length,
-                page,
-                pageSize,
-                totalPages: Math.ceil(logs.length / pageSize)
-            }), {
-                status: 200,
-                headers: { 'Content-Type': 'application/json' }
-            });
-        } catch (error) {
-            return new Response(JSON.stringify({ error: error.message }), {
-                status: 500,
-                headers: { 'Content-Type': 'application/json' }
-            });
-        }
       }
 
       if (url.pathname === '/api/saveOrder' && request.method === 'POST') {
@@ -6110,192 +4612,6 @@ export default {
         }
       }
 
-      // 手动刷新链接状态的API端点（使用新的检测系统）
-      if (url.pathname === '/api/refreshLinkStatus' && request.method === 'POST') {
-        try {
-            const { userId, forceCheck = true } = await request.json();
-            
-            if (!userId) {
-                return new Response(JSON.stringify({
-                    success: false,
-                    message: '缺少userId参数'
-                }), {
-                    status: 400,
-                    headers: { 'Content-Type': 'application/json' }
-                });
-            }
-            
-            // 获取用户数据
-            const userData = await env.CARD_ORDER.get(userId);
-            
-            if (!userData) {
-                return new Response(JSON.stringify({
-                    success: false,
-                    message: '用户数据不存在'
-                }), {
-                    status: 404,
-                    headers: { 'Content-Type': 'application/json' }
-                });
-            }
-            
-            const parsedData = JSON.parse(userData);
-            const allLinks = parsedData.links || [];
-            
-            if (allLinks.length === 0) {
-                return new Response(JSON.stringify({
-                    success: true,
-                    message: '没有需要检查的链接',
-                    checkedCount: 0,
-                    okCount: 0,
-                    errorCount: 0,
-                    cachedCount: 0,
-                    details: []
-                }), {
-                    status: 200,
-                    headers: { 'Content-Type': 'application/json' }
-                });
-            }
-            
-            const startTime = Date.now();
-            
-            // 使用新的智能检测系统
-            // 注意：Cloudflare Workers 限制每个请求最多 50 个子请求
-            // 智能缓存模式可以检测更多链接（因为缓存的不消耗子请求）
-            const maxLinksPerRequest = forceCheck ? 45 : allLinks.length; // 缓存模式检测所有
-            const linksToCheck = forceCheck && allLinks.length > 45
-                ? allLinks.slice(0, 45)
-                : allLinks;
-            
-            const isPartialCheck = forceCheck && allLinks.length > 45;
-            
-            const results = forceCheck 
-                ? await checkAllLinksStatus(linksToCheck, {
-                    concurrency: 5,      // 降低并发数，避免触发限制
-                    timeout: 8000,
-                    maxRetries: 1,       // 减少重试次数
-                    batchDelay: 800      // 增加批次间延迟
-                })
-                : await smartCheckLinks(linksToCheck, {
-                    cacheValidDuration: 3600000,
-                    forceCheck: false,
-                    concurrency: 5
-                });
-            
-            // 统计和更新链接状态
-            let errorCount = 0;
-            let okCount = 0;
-            let cachedCount = 0;
-            let timeoutCount = 0;
-            let networkErrorCount = 0;
-            const errorDetails = [];
-            
-            for (const link of allLinks) {
-                const result = results[link.url];
-                
-                if (result) {
-                    const isOk = result.isOk;
-                    link.status = isOk ? 'ok' : 'error';
-                    link.lastChecked = result.checkedAt || new Date().toISOString();
-                    link.statusCode = result.status;
-                    link.statusText = result.statusText;
-                    link.statusError = result.errorMessage || null;
-                    
-                    if (result.cached) {
-                        cachedCount++;
-                    }
-                    
-                    if (isOk) {
-                        okCount++;
-                    } else {
-                        errorCount++;
-                        
-                        // 统计错误类型
-                        if (result.error === 'TIMEOUT') {
-                            timeoutCount++;
-                        } else if (result.error === 'NETWORK_ERROR') {
-                            networkErrorCount++;
-                        }
-                        
-                        // 记录错误详情
-                        errorDetails.push({
-                            name: link.name,
-                            url: link.url,
-                            error: result.error,
-                            errorMessage: result.errorMessage,
-                            statusCode: result.status,
-                            checkMethod: result.checkMethod  // 检测方法：favicon 或 direct
-                        });
-                    }
-                }
-            }
-            
-            // 更新最后检查时间
-            parsedData.lastStatusCheck = Date.now();
-            
-            // 保存更新后的数据
-            await env.CARD_ORDER.put(userId, JSON.stringify(parsedData));
-            
-            const duration = Date.now() - startTime;
-            
-            // 记录手动检测日志
-            const logEntry = {
-                id: 'log_' + Date.now(),
-                timestamp: new Date(startTime).toISOString(),
-                endTime: new Date().toISOString(),
-                type: 'manual',
-                users: [{
-                    userId: userId,
-                    total: allLinks.length,
-                    ok: okCount,
-                    error: errorCount,
-                    cached: cachedCount,
-                    errorLinks: errorDetails.slice(0, 5).map(function(detail) {
-                        return { url: detail.url, error: detail.error };
-                    })
-                }],
-                summary: {
-                    success: true,
-                    totalUsers: 1,
-                    totalLinks: allLinks.length,
-                    message: '手动检测完成: ' + allLinks.length + ' 个链接'
-                }
-            };
-            await saveLog(env, logEntry);
-            
-            return new Response(JSON.stringify({
-                success: true,
-                message: isPartialCheck 
-                    ? '链接状态检查完成（由于 Workers 限制，仅检测前 ' + maxLinksPerRequest + ' 个链接）'
-                    : '链接状态检查完成',
-                stats: {
-                    total: allLinks.length,
-                    checked: linksToCheck.length - cachedCount,
-                    cached: cachedCount,
-                    ok: okCount,
-                    error: errorCount,
-                    timeout: timeoutCount,
-                    networkError: networkErrorCount,
-                    skipped: isPartialCheck ? allLinks.length - maxLinksPerRequest : 0
-                },
-                duration: duration,
-                lastStatusCheck: parsedData.lastStatusCheck,
-                errorDetails: errorDetails.slice(0, 10),  // 最多返回10个错误详情
-                isPartialCheck: isPartialCheck
-            }), {
-                status: 200,
-                headers: { 'Content-Type': 'application/json' }
-            });
-        } catch (error) {
-            return new Response(JSON.stringify({
-                success: false,
-                message: '刷新状态失败: ' + error.message,
-                error: error.stack
-            }), {
-                status: 500,
-                headers: { 'Content-Type': 'application/json' }
-            });
-        }
-      }
 
       if (url.pathname === '/api/backupData' && request.method === 'POST') {
         // 🔧 安全修复：添加管理员权限验证
