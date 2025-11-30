@@ -349,6 +349,320 @@ const HTML_CONTENT = `
         border-color: #444;
     }
 
+    /* 日志弹窗样式 */
+    .logs-modal-content {
+        background-color: white;
+        padding: 0;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 900px;
+        max-height: 80vh;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        animation: modalFadeIn 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .logs-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 25px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .logs-header h3 {
+        margin: 0;
+        font-size: 20px;
+        color: #333;
+    }
+
+    .logs-close-btn {
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: #999;
+        cursor: pointer;
+        padding: 0;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.2s;
+    }
+
+    .logs-close-btn:hover {
+        background-color: #f0f0f0;
+        color: #333;
+    }
+
+    .logs-filters {
+        padding: 15px 25px;
+        display: flex;
+        gap: 10px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .logs-filters select {
+        padding: 8px 12px;
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+        font-size: 14px;
+        outline: none;
+    }
+
+    .logs-refresh-btn {
+        padding: 8px 15px;
+        background-color: #43b883;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.2s;
+    }
+
+    .logs-refresh-btn:hover {
+        background-color: #35a674;
+    }
+
+    .logs-content {
+        flex: 1;
+        overflow-y: auto;
+        padding: 20px 25px;
+        min-height: 300px;
+    }
+
+    .logs-loading {
+        text-align: center;
+        padding: 40px;
+        color: #999;
+        font-size: 14px;
+    }
+
+    .log-entry {
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-left: 4px solid #43b883;
+        transition: all 0.2s;
+    }
+
+    .log-entry:hover {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .log-entry.error {
+        border-left-color: #e74c3c;
+    }
+
+    .log-header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .log-time {
+        font-size: 13px;
+        color: #666;
+    }
+
+    .log-type {
+        padding: 3px 8px;
+        border-radius: 3px;
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .log-type.scheduled {
+        background-color: #e3f2fd;
+        color: #1976d2;
+    }
+
+    .log-type.manual {
+        background-color: #f3e5f5;
+        color: #7b1fa2;
+    }
+
+    .log-summary {
+        font-size: 14px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .log-users {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .log-user-item {
+        background-color: white;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 13px;
+    }
+
+    .log-user-name {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    .log-user-stats {
+        color: #666;
+        font-size: 12px;
+    }
+
+    .log-user-stats .ok {
+        color: #43b883;
+    }
+
+    .log-user-stats .error {
+        color: #e74c3c;
+    }
+
+    .log-error-links {
+        margin-top: 8px;
+        padding-top: 8px;
+        border-top: 1px solid #f0f0f0;
+    }
+
+    .log-error-link {
+        font-size: 11px;
+        color: #999;
+        margin: 3px 0;
+        word-break: break-all;
+    }
+
+    .logs-pagination {
+        padding: 15px 25px;
+        border-top: 1px solid #e0e0e0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .logs-pagination button {
+        padding: 8px 15px;
+        background-color: #43b883;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.2s;
+    }
+
+    .logs-pagination button:hover:not(:disabled) {
+        background-color: #35a674;
+    }
+
+    .logs-pagination button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+
+    .logs-pagination span {
+        font-size: 14px;
+        color: #666;
+    }
+
+    /* 暗色主题日志样式 */
+    body.dark-theme .logs-modal-content {
+        background-color: #252830;
+    }
+
+    body.dark-theme .logs-header {
+        border-bottom-color: #3a3e4a;
+    }
+
+    body.dark-theme .logs-header h3 {
+        color: #e3e3e3;
+    }
+
+    body.dark-theme .logs-close-btn {
+        color: #999;
+    }
+
+    body.dark-theme .logs-close-btn:hover {
+        background-color: #3a3e4a;
+        color: #e3e3e3;
+    }
+
+    body.dark-theme .logs-filters {
+        border-bottom-color: #3a3e4a;
+    }
+
+    body.dark-theme .logs-filters select {
+        background-color: #323642;
+        color: #e3e3e3;
+        border-color: #444;
+    }
+
+    body.dark-theme .logs-refresh-btn {
+        background-color: #5d7fb9;
+    }
+
+    body.dark-theme .logs-refresh-btn:hover {
+        background-color: #4a6fa5;
+    }
+
+    body.dark-theme .log-entry {
+        background-color: #2a2e38;
+        border-left-color: #5d7fb9;
+    }
+
+    body.dark-theme .log-entry.error {
+        border-left-color: #e74c3c;
+    }
+
+    body.dark-theme .log-time {
+        color: #999;
+    }
+
+    body.dark-theme .log-summary {
+        color: #e3e3e3;
+    }
+
+    body.dark-theme .log-user-item {
+        background-color: #323642;
+    }
+
+    body.dark-theme .log-user-name {
+        color: #e3e3e3;
+    }
+
+    body.dark-theme .log-user-stats {
+        color: #999;
+    }
+
+    body.dark-theme .log-error-links {
+        border-top-color: #3a3e4a;
+    }
+
+    body.dark-theme .logs-pagination {
+        border-top-color: #3a3e4a;
+    }
+
+    body.dark-theme .logs-pagination button {
+        background-color: #5d7fb9;
+    }
+
+    body.dark-theme .logs-pagination button:hover:not(:disabled) {
+        background-color: #4a6fa5;
+    }
+
+    body.dark-theme .logs-pagination span {
+        color: #999;
+    }
+
     /* 悬浮提示样式 */
     @media (hover: hover) and (pointer: fine) {
         .has-tooltip {
@@ -746,6 +1060,11 @@ const HTML_CONTENT = `
         background-color: #2980b9;
     }
     
+    #refresh-status-btn svg {
+        display: block;
+        margin: 0 auto;
+    }
+    
     /* 刷新状态时的加载动画 */
     @keyframes rotating {
         from { transform: rotate(0deg); }
@@ -926,6 +1245,10 @@ const HTML_CONTENT = `
             font-size: 18px;
             padding-left: 12px;
             min-width: 90px;
+            max-width: 200px; /* 限制最大宽度 */
+            white-space: nowrap; /* 不换行 */
+            overflow: hidden; /* 隐藏溢出 */
+            text-overflow: ellipsis; /* 显示省略号 */
         }
     }
 
@@ -1307,23 +1630,29 @@ const HTML_CONTENT = `
 
         .search-bar {
             flex-wrap: nowrap;
-            max-width: 300px; /* 减小搜索栏宽度 */
-            width: 90%; /* 相对宽度 */
+            max-width: 320px; /* 稍微增加搜索栏宽度 */
+            width: 92%; /* 增加相对宽度 */
             margin: 4px auto 6px auto; /* 减小上下边距 */
         }
 
         .search-bar select {
-            width: 80px; /* 缩小选择框宽度，参考佬友修改版 */
-            flex: 0 0 auto;
+            width: 90px; /* 增加选择框宽度以改善对称性 */
+            flex: 0 0 90px;
             font-size: 12px; /* 减小字体以适应更小宽度 */
+            padding: 8px 10px; /* 调整内边距 */
         }
 
         .search-bar input {
             flex: 1;
+            min-width: 0; /* 确保输入框可以正确收缩 */
+            padding: 8px 10px; /* 统一内边距 */
+            font-size: 13px; /* 稍微增加字体大小 */
         }
 
         .search-bar button {
-            flex: 0 0 auto;
+            flex: 0 0 50px; /* 固定按钮宽度 */
+            padding: 8px 12px; /* 调整内边距 */
+            font-size: 16px; /* 增加图标大小 */
         }
 
         .admin-controls input,
@@ -1404,6 +1733,11 @@ const HTML_CONTENT = `
             height: 32px;
             font-size: 16px;
         }
+        
+        #refresh-status-btn svg {
+            width: 16px;
+            height: 16px;
+        }
 
         #dialog-box {
             width: 90%;
@@ -1411,15 +1745,12 @@ const HTML_CONTENT = `
             padding: 20px;
         }
 
-        .section-title {
-            font-size: 16px; /* 进一步减小字体 */
-            min-width: 80px;
-            padding-left: 10px; /* 减小左边距 */
+        .section-title-container {
+            display: none; /* 移动端隐藏分类标题 */
         }
         
-        .section-title:before {
-            width: 3px;
-            height: 16px;
+        .section {
+            margin-bottom: 15px; /* 减小分类间距 */
         }
     }
 
@@ -1921,11 +2252,8 @@ const HTML_CONTENT = `
                 </svg>
             </button>
             <button id="refresh-status-btn" onclick="refreshLinksStatus()" title="刷新链接状态" style="display: none;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 2v6h-6"></path>
-                    <path d="M3 12a9 9 0 0 1 15-6.7l3 2.7"></path>
-                    <path d="M3 22v-6h6"></path>
-                    <path d="M21 12a9 9 0 0 1-15 6.7l-3-2.7"></path>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
                 </svg>
             </button>
             <button id="theme-toggle" onclick="toggleTheme()">◑</button>
@@ -1961,6 +2289,32 @@ const HTML_CONTENT = `
                 <div class="login-modal-buttons">
                     <button class="cancel" onclick="hideLoginModal()">取消</button>
                     <button onclick="performLogin()">确定</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 日志弹窗 -->
+        <div id="logs-modal" class="login-modal" style="display: none;">
+            <div class="logs-modal-content">
+                <div class="logs-header">
+                    <h3>🔍 链接检测日志</h3>
+                    <button class="logs-close-btn" onclick="hideLogsModal()">✕</button>
+                </div>
+                <div class="logs-filters">
+                    <select id="logs-filter-type">
+                        <option value="all">全部类型</option>
+                        <option value="scheduled">定时任务</option>
+                        <option value="manual">手动检测</option>
+                    </select>
+                    <button onclick="loadLogs()" class="logs-refresh-btn">🔄 刷新</button>
+                </div>
+                <div class="logs-content" id="logs-content">
+                    <div class="logs-loading">加载中...</div>
+                </div>
+                <div class="logs-pagination">
+                    <button id="logs-prev-btn" onclick="prevLogsPage()" disabled>上一页</button>
+                    <span id="logs-page-info">第 1 页</span>
+                    <button id="logs-next-btn" onclick="nextLogsPage()">下一页</button>
                 </div>
             </div>
         </div>
@@ -3389,15 +3743,157 @@ const HTML_CONTENT = `
         logAction('退出登录');
     }
 
+    // 日志相关变量
+    let currentLogsPage = 1;
+    let totalLogsPages = 1;
+
+    // 显示日志弹窗
+    function showLogsModal() {
+        document.getElementById('logs-modal').style.display = 'flex';
+        loadLogs();
+    }
+
+    // 隐藏日志弹窗
+    function hideLogsModal() {
+        document.getElementById('logs-modal').style.display = 'none';
+    }
+
+    // 加载日志
+    async function loadLogs(page = 1) {
+        const logsContent = document.getElementById('logs-content');
+        logsContent.innerHTML = '<div class="logs-loading">加载中...</div>';
+
+        try {
+            const token = localStorage.getItem('authToken');
+            if (!token) {
+                logsContent.innerHTML = '<div class="logs-loading">请先登录</div>';
+                return;
+            }
+
+            const response = await fetch('/api/getLogs?page=' + page + '&pageSize=10', {
+                headers: {
+                    'Authorization': token
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('加载日志失败');
+            }
+
+            const data = await response.json();
+            console.log('日志数据:', data);
+            currentLogsPage = data.page;
+            totalLogsPages = data.totalPages;
+
+            if (!data.logs || data.logs.length === 0) {
+                logsContent.innerHTML = '<div class="logs-loading">暂无日志记录<br><small>提示：日志由定时任务自动生成，请等待定时任务运行或手动触发检测</small></div>';
+                return;
+            }
+
+            // 渲染日志
+            logsContent.innerHTML = data.logs.map(log => renderLogEntry(log)).join('');
+
+            // 更新分页按钮
+            document.getElementById('logs-prev-btn').disabled = currentLogsPage <= 1;
+            document.getElementById('logs-next-btn').disabled = currentLogsPage >= totalLogsPages;
+            document.getElementById('logs-page-info').textContent = '第 ' + currentLogsPage + '/' + totalLogsPages + ' 页';
+
+        } catch (error) {
+            console.error('加载日志失败:', error);
+            logsContent.innerHTML = '<div class="logs-loading">加载失败，请重试</div>';
+        }
+    }
+
+    // 渲染单条日志
+    function renderLogEntry(log) {
+        const time = new Date(log.timestamp).toLocaleString('zh-CN');
+        const duration = log.endTime ? 
+            Math.round((new Date(log.endTime) - new Date(log.timestamp)) / 1000) : 0;
+        const isError = log.summary && !log.summary.success;
+
+        let usersHtml = '';
+        if (log.users && log.users.length > 0) {
+            const userItems = log.users.map(function(user) {
+                let errorLinksHtml = '';
+                if (user.errorLinks && user.errorLinks.length > 0) {
+                    const errorLinkItems = user.errorLinks.map(function(link) {
+                        return '<div class="log-error-link">❌ ' + link.url + ': ' + link.error + '</div>';
+                    }).join('');
+                    errorLinksHtml = '<div class="log-error-links">' + errorLinkItems + '</div>';
+                }
+                
+                let statsHtml = '';
+                if (user.batchRange) {
+                    // 分批检测模式
+                    statsHtml = '📦 总计: ' + user.total + ' | ' +
+                        '🔍 本批: ' + user.checked + ' (' + user.batchRange + ') | ' +
+                        '➡️ 下次从: ' + user.nextCheckIndex + ' | ' +
+                        '<span class="ok">✅ ' + user.ok + '</span> | ' +
+                        '<span class="error">❌ ' + user.error + '</span> | ' +
+                        '💾 缓存: ' + user.cached;
+                } else {
+                    // 全量检测模式
+                    statsHtml = '总计: ' + user.total + ' | ' +
+                        '<span class="ok">正常: ' + user.ok + '</span> | ' +
+                        '<span class="error">异常: ' + user.error + '</span> | ' +
+                        '缓存: ' + user.cached;
+                }
+                
+                return '<div class="log-user-item">' +
+                    '<div class="log-user-name">' + user.userId + '</div>' +
+                    '<div class="log-user-stats">' + statsHtml + '</div>' +
+                    errorLinksHtml +
+                '</div>';
+            }).join('');
+            
+            usersHtml = '<div class="log-users">' + userItems + '</div>';
+        }
+
+        const durationText = duration > 0 ? '(耗时 ' + duration + '秒)' : '';
+        const typeText = log.type === 'scheduled' ? '定时任务' : '手动检测';
+        const summaryText = log.summary.message || (isError ? '❌ ' + log.summary.error : '✅ 检测完成');
+        const errorClass = isError ? 'error' : '';
+        
+        return '<div class="log-entry ' + errorClass + '">' +
+            '<div class="log-header-row">' +
+                '<span class="log-time">⏰ ' + time + ' ' + durationText + '</span>' +
+                '<span class="log-type ' + log.type + '">' + typeText + '</span>' +
+            '</div>' +
+            '<div class="log-summary">' + summaryText + '</div>' +
+            usersHtml +
+        '</div>';
+    }
+
+    // 上一页
+    function prevLogsPage() {
+        if (currentLogsPage > 1) {
+            loadLogs(currentLogsPage - 1);
+        }
+    }
+
+    // 下一页
+    function nextLogsPage() {
+        if (currentLogsPage < totalLogsPages) {
+            loadLogs(currentLogsPage + 1);
+        }
+    }
+
     // 更新按钮状态
     function updateLoginButton() {
         const loginBtn = document.getElementById('login-btn');
         const adminBtn = document.getElementById('admin-btn');
+        const logsBtn = document.getElementById('logs-btn');
         const refreshStatusBtn = document.getElementById('refresh-status-btn');
 
         if (isLoggedIn) {
             loginBtn.textContent = '退出登录';
             adminBtn.style.display = 'inline-block';
+            if (logsBtn) {
+                logsBtn.style.display = 'inline-block';
+                console.log('日志按钮已显示');
+            } else {
+                console.warn('未找到日志按钮元素');
+            }
             // 登录后显示刷新状态按钮
             if (refreshStatusBtn) {
                 refreshStatusBtn.style.display = 'block';
@@ -3410,6 +3906,9 @@ const HTML_CONTENT = `
         } else {
             loginBtn.textContent = '登录';
             adminBtn.style.display = 'none';
+            if (logsBtn) {
+                logsBtn.style.display = 'none';
+            }
             // 未登录时隐藏刷新状态按钮
             if (refreshStatusBtn) {
                 refreshStatusBtn.style.display = 'none';
@@ -4494,6 +4993,12 @@ async function verifyPassword(inputPassword) {
         if (adminBtn) {
             adminBtn.onclick = toggleAdminMode;
         }
+        
+        // 绑定日志按钮事件
+        const logsBtn = document.getElementById('logs-btn');
+        if (logsBtn) {
+            logsBtn.onclick = showLogsModal;
+        }
     });
 
     </script>
@@ -4504,6 +5009,7 @@ async function verifyPassword(inputPassword) {
             <span class="site-title">柒蓝导航</span>
             <p>&copy; 2025 <a href="https://github.com/qilan28/Card-Tab" target="_blank">Card-Tab</a></p>
             <div class="buttons-group">
+                <button class="admin-btn" id="logs-btn" style="display: none;">📊 日志</button>
                 <button class="admin-btn" id="admin-btn" style="display: none;">设置</button>
                 <button class="login-btn" id="login-btn">登录</button>
             </div>
@@ -4622,11 +5128,12 @@ function extractDomainForFavicon(url) {
  */
 async function checkLinkStatus(url, options = {}) {
     const {
-        timeout = 8000,           // 超时时间（毫秒）
-        maxRetries = 2,           // 最大重试次数
-        retryDelay = 1000,        // 重试延迟（毫秒）
+        timeout = 5000,           // 超时时间（毫秒）
+        maxRetries = 1,           // 最大重试次数
+        retryDelay = 500,         // 重试延迟（毫秒）
         followRedirects = true,   // 是否跟随重定向
-        checkFaviconFirst = true  // 是否先检测 favicon
+        checkFaviconFirst = true, // 是否先检测 favicon - 默认启用
+        faviconTimeout = 3000     // Favicon检测超时（毫秒）- 更短的超时
     } = options;
     
     // 规范化URL
@@ -4650,14 +5157,20 @@ async function checkLinkStatus(url, options = {}) {
         };
     }
     
-    // 策略1: 先检测 favicon（更快速）
+    // 策略1: 优先使用 Favicon 检测（最快速、最可靠）
     if (checkFaviconFirst) {
         const domain = extractDomainForFavicon(normalizedUrl);
         if (domain) {
-            const faviconUrl = 'https://www.faviconextractor.com/favicon/' + domain;
+            // 使用多个Favicon服务作为备选
+            const faviconServices = [
+                `https://www.google.com/s2/favicons?domain=${domain}&sz=32`,
+                `https://favicon.im/${domain}`,
+                `https://www.faviconextractor.com/favicon/${domain}`
+            ];
             
+            // 尝试第一个服务（Google Favicon服务最可靠）
             try {
-                const faviconResult = await performQuickCheck(faviconUrl, 5000);
+                const faviconResult = await performQuickCheck(faviconServices[0], faviconTimeout);
                 
                 // 如果 favicon 可以访问，认为网站正常
                 if (faviconResult.isOk) {
@@ -4665,18 +5178,28 @@ async function checkLinkStatus(url, options = {}) {
                         url: url,
                         status: 200,
                         isOk: true,
-                        statusText: 'OK (Favicon Check)',
+                        statusText: 'OK (Favicon)',
                         checkMethod: 'favicon',
                         checkedAt: new Date().toISOString()
                     };
                 }
-                
-                // 如果 favicon 返回 404，可能网站没有 favicon，需要检测网站本身
-                if (faviconResult.status === 404) {
-                    // 继续检测网站本身
-                }
             } catch (faviconError) {
-                // favicon 检测失败，继续检测网站本身
+                // Google服务失败，尝试备用服务
+                try {
+                    const faviconResult2 = await performQuickCheck(faviconServices[1], faviconTimeout);
+                    if (faviconResult2.isOk) {
+                        return {
+                            url: url,
+                            status: 200,
+                            isOk: true,
+                            statusText: 'OK (Favicon)',
+                            checkMethod: 'favicon',
+                            checkedAt: new Date().toISOString()
+                        };
+                    }
+                } catch (error2) {
+                    // 所有Favicon服务都失败，降级到直接检测
+                }
             }
         }
     }
@@ -4687,8 +5210,19 @@ async function checkLinkStatus(url, options = {}) {
         try {
             const result = await performCheck(normalizedUrl, timeout, followRedirects);
             
-            // 如果成功或者是明确的错误状态码（非网络错误），直接返回
-            if (result.isOk || result.status > 0) {
+            // 如果成功，直接返回
+            if (result.isOk) {
+                return {
+                    ...result,
+                    url: url,
+                    attempts: attempt + 1,
+                    checkMethod: 'direct',
+                    checkedAt: new Date().toISOString()
+                };
+            }
+            
+            // 如果是明确的HTTP错误状态码（4xx, 5xx），也返回
+            if (result.status >= 400) {
                 return {
                     ...result,
                     url: url,
@@ -4839,7 +5373,30 @@ async function performCheck(url, timeout, followRedirects) {
             };
         }
         
-        // 网络错误
+        // 检查是否是CORS或SSL错误
+        const errorMsg = error.message || '';
+        if (errorMsg.includes('CORS') || errorMsg.includes('cross-origin')) {
+            // CORS错误通常意味着网站存在但有跨域限制
+            // 在Cloudflare Workers中，这可能表示网站正常
+            return {
+                status: 200,
+                isOk: true,
+                statusText: 'OK (CORS限制)',
+                error: 'CORS',
+                errorMessage: 'CORS限制，但网站可能正常'
+            };
+        }
+        
+        if (errorMsg.includes('SSL') || errorMsg.includes('certificate')) {
+            return {
+                status: 0,
+                isOk: false,
+                error: 'SSL_ERROR',
+                errorMessage: 'SSL证书错误'
+            };
+        }
+        
+        // 其他网络错误
         return {
             status: 0,
             isOk: false,
@@ -4889,20 +5446,28 @@ function sleep(ms) {
  */
 async function checkAllLinksStatus(links, options = {}) {
     const {
-        concurrency = 8,          // 并发数量
-        batchDelay = 500,         // 批次间延迟（毫秒）
-        timeout = 8000,           // 单个请求超时
-        maxRetries = 2,           // 最大重试次数
-        onProgress = null         // 进度回调函数
+        concurrency = 2,          // 并发数量 - 降低到2避免Workers限制
+        batchDelay = 1000,        // 批次间延迟（毫秒）- 增加到1秒
+        timeout = 5000,           // 单个请求超时
+        maxRetries = 1,           // 最大重试次数
+        onProgress = null,        // 进度回调函数
+        maxLinks = 40             // 单次最多检测链接数（避免超过Workers限制）
     } = options;
     
     const results = {};
-    const total = links.length;
+    let total = links.length;
     let completed = 0;
     
     // 如果没有链接，直接返回
     if (total === 0) {
         return results;
+    }
+    
+    // 限制单次检测的链接数，避免超过Workers子请求限制
+    if (links.length > maxLinks) {
+        console.log(`链接数量超过限制，只检测前 ${maxLinks} 个链接`);
+        links = links.slice(0, maxLinks);
+        total = links.length;
     }
     
     // 分批处理
@@ -4911,9 +5476,13 @@ async function checkAllLinksStatus(links, options = {}) {
         batches.push(links.slice(i, i + concurrency));
     }
     
+    console.log(`开始检测 ${total} 个链接，分为 ${batches.length} 个批次，每批 ${concurrency} 个`);
+    
     // 逐批检查
     for (let batchIndex = 0; batchIndex < batches.length; batchIndex++) {
         const batch = batches[batchIndex];
+        
+        console.log(`正在检测第 ${batchIndex + 1}/${batches.length} 批，包含 ${batch.length} 个链接`);
         
         // 并发检查当前批次
         const batchPromises = batch.map(async (link) => {
@@ -4942,6 +5511,8 @@ async function checkAllLinksStatus(links, options = {}) {
                 return result;
             } catch (error) {
                 // 单个链接检测失败，记录错误但不中断整体流程
+                console.error(`检测失败: ${link.url}, 错误: ${error.message}`);
+                
                 const errorResult = {
                     url: link.url,
                     status: 0,
@@ -4971,11 +5542,16 @@ async function checkAllLinksStatus(links, options = {}) {
         // 等待当前批次完成
         await Promise.all(batchPromises);
         
-        // 批次间延迟，避免过载
+        console.log(`第 ${batchIndex + 1} 批完成，已完成 ${completed}/${total}`);
+        
+        // 批次间延迟，避免过载和超过Workers限制
         if (batchIndex < batches.length - 1 && batchDelay > 0) {
+            console.log(`等待 ${batchDelay}ms 后继续下一批...`);
             await sleep(batchDelay);
         }
     }
+    
+    console.log(`所有检测完成，总计 ${total} 个链接`);
     
     return results;
 }
@@ -4986,7 +5562,7 @@ async function checkAllLinksStatus(links, options = {}) {
  */
 async function smartCheckLinks(links, options = {}) {
     const {
-        cacheValidDuration = 3600000,  // 缓存有效期（1小时）
+        cacheValidDuration = 1800000,  // 缓存有效期（30分钟，匹配定时任务间隔）
         forceCheck = false              // 强制检查所有链接
     } = options;
     
@@ -5030,11 +5606,46 @@ async function smartCheckLinks(links, options = {}) {
     };
 }
 
+/**
+ * 保存检测日志到KV
+ */
+async function saveLog(env, logEntry) {
+    try {
+        // 获取现有日志列表
+        const logsData = await env.CARD_ORDER.get('check_logs');
+        let logs = logsData ? JSON.parse(logsData) : [];
+        
+        // 添加新日志
+        logs.unshift(logEntry);
+        
+        // 只保留最近100条日志
+        if (logs.length > 100) {
+            logs = logs.slice(0, 100);
+        }
+        
+        // 保存回 KV
+        await env.CARD_ORDER.put('check_logs', JSON.stringify(logs));
+        console.log(`日志已保存: ${logEntry.id}`);
+    } catch (error) {
+        console.error('保存日志失败:', error.message);
+    }
+}
+
 export default {
     // 定时触发处理函数（Cron Triggers）
     // 自动定期检查所有用户的链接状态
     async scheduled(event, env, ctx) {
-        console.log('定时任务触发:', new Date().toISOString());
+        const startTime = new Date().toISOString();
+        console.log('定时任务触发:', startTime);
+        
+        // 初始化日志记录
+        const logEntry = {
+            id: `log_${Date.now()}`,
+            timestamp: startTime,
+            type: 'scheduled',
+            users: [],
+            summary: {}
+        };
         
         try {
             // 获取所有用户ID
@@ -5043,6 +5654,8 @@ export default {
             let totalUsers = 0;
             
             // 对每个用户的链接进行状态检查
+            const BATCH_SIZE = 25;  // 每批检测25个链接（降低以避免子请求限制）
+            
             for (const userId of userIds.keys) {
                 try {
                     // 获取用户数据
@@ -5054,17 +5667,37 @@ export default {
                     
                     if (allLinks.length === 0) continue;
                     
-                    console.log(`检查用户 ${userId.name} 的 ${allLinks.length} 个链接`);
+                    // 获取上次检测的批次位置（默认从0开始）
+                    const lastCheckIndex = parsedData.lastCheckIndex || 0;
+                    const totalLinks = allLinks.length;
                     
-                    // 使用智能缓存模式，避免超过子请求限制
-                    // 只检测新链接和异常链接，跳过1小时内正常的链接
-                    const results = await smartCheckLinks(allLinks, {
-                        cacheValidDuration: 3600000,  // 1小时缓存
-                        forceCheck: false,             // 使用智能缓存
-                        concurrency: 5,                // 降低并发
-                        timeout: 8000,
-                        maxRetries: 1,
-                        batchDelay: 1000               // 增加延迟
+                    // 计算本次检测的范围
+                    let startIndex = lastCheckIndex;
+                    let endIndex = Math.min(startIndex + BATCH_SIZE, totalLinks);
+                    
+                    // 如果已经检测完所有链接，从头开始
+                    if (startIndex >= totalLinks) {
+                        startIndex = 0;
+                        endIndex = Math.min(BATCH_SIZE, totalLinks);
+                    }
+                    
+                    // 获取本批次要检测的链接
+                    const linksToCheck = allLinks.slice(startIndex, endIndex);
+                    
+                    console.log(`检查用户 ${userId.name}: 总计 ${totalLinks} 个链接，本批次检测 ${startIndex}-${endIndex} (共 ${linksToCheck.length} 个)`);
+                    
+                    // 使用智能缓存模式检测本批次链接
+                    // 关键：降低并发数和增加延迟，避免触发子请求限制
+                    const results = await smartCheckLinks(linksToCheck, {
+                        cacheValidDuration: 1200000,  // 20分钟缓存（匹配定时任务间隔）
+                        forceCheck: false,
+                        concurrency: 1,               // 降低到1（串行检测）
+                        timeout: 4000,                // 降低超时时间
+                        maxRetries: 0,                // 不重试，避免额外请求
+                        batchDelay: 1500,             // 增加批次延迟到1.5秒
+                        checkFaviconFirst: true,
+                        faviconTimeout: 2500,
+                        maxLinks: BATCH_SIZE
                     });
                     
                     // 统计检测结果
@@ -5072,8 +5705,9 @@ export default {
                     let errorCount = 0;
                     let cachedCount = 0;
                     
-                    // 更新链接状态
-                    for (const link of allLinks) {
+                    // 只更新本批次检测的链接状态
+                    for (let i = startIndex; i < endIndex; i++) {
+                        const link = allLinks[i];
                         const result = results[link.url];
                         if (result) {
                             link.status = result.isOk ? 'ok' : 'error';
@@ -5094,16 +5728,52 @@ export default {
                         }
                     }
                     
-                    // 更新最后检查时间
+                    // 更新最后检查时间和下次检测的起始位置
                     parsedData.lastStatusCheck = Date.now();
+                    
+                    // 计算下次检测的起始位置
+                    const nextCheckIndex = endIndex >= totalLinks ? 0 : endIndex;
+                    parsedData.lastCheckIndex = nextCheckIndex;
                     
                     // 保存更新后的数据
                     await env.CARD_ORDER.put(userId.name, JSON.stringify(parsedData));
                     
-                    totalChecked += allLinks.length;
+                    totalChecked += linksToCheck.length;
                     totalUsers++;
                     
-                    console.log(`用户 ${userId.name} 检查完成: 总计 ${allLinks.length}, 正常 ${okCount}, 异常 ${errorCount}, 缓存 ${cachedCount}`);
+                    const batchInfo = nextCheckIndex === 0 ? '(本轮检测完成，下次从头开始)' : '(下次从第 ' + nextCheckIndex + ' 个开始)';
+                    console.log(`用户 ${userId.name} 检查完成: 本批次 ${startIndex}-${endIndex}/${totalLinks}, 正常 ${okCount}, 异常 ${errorCount}, 缓存 ${cachedCount} ${batchInfo}`);
+                    
+                    // 输出前5个异常链接用于调试
+                    const errorLinks = allLinks.filter(link => link.status === 'error').slice(0, 5);
+                    if (errorLinks.length > 0) {
+                        console.log('异常链接示例:');
+                        errorLinks.forEach(link => {
+                            console.log(`  - ${link.url}: ${link.statusError || '未知错误'}`);
+                        });
+                    }
+                    
+                    // 记录用户检测日志
+                    logEntry.users.push({
+                        userId: userId.name,
+                        total: allLinks.length,
+                        checked: linksToCheck.length,
+                        batchRange: startIndex + '-' + endIndex,
+                        nextCheckIndex: nextCheckIndex,
+                        ok: okCount,
+                        error: errorCount,
+                        cached: cachedCount,
+                        errorLinks: errorLinks.map(link => ({
+                            url: link.url,
+                            error: link.statusError || '未知错误'
+                        }))
+                    });
+                    
+                    // 用户间延迟，避免累积子请求
+                    if (totalUsers > 0) {
+                        console.log('等待2秒后处理下一个用户...');
+                        await new Promise(resolve => setTimeout(resolve, 2000));
+                    }
                     
                 } catch (userError) {
                     console.error(`检查用户 ${userId.name} 失败:`, userError.message);
@@ -5111,8 +5781,21 @@ export default {
                 }
             }
             
-            const message = `定时检查完成: ${totalUsers} 个用户, ${totalChecked} 个链接`;
+            const message = '定时检查完成: ' + totalUsers + ' 个用户, 本批次检测 ' + totalChecked + ' 个链接';
             console.log(message);
+            
+            // 完善日志记录
+            logEntry.endTime = new Date().toISOString();
+            logEntry.summary = {
+                totalUsers,
+                totalLinks: totalChecked,
+                batchCheck: true,
+                success: true,
+                message
+            };
+            
+            // 保存日志到KV
+            await saveLog(env, logEntry);
             
             return new Response(JSON.stringify({ 
                 success: true, 
@@ -5125,6 +5808,15 @@ export default {
             
         } catch (error) {
             console.error('定时任务失败:', error);
+            
+            // 记录错误日志
+            logEntry.endTime = new Date().toISOString();
+            logEntry.summary = {
+                success: false,
+                error: error.message
+            };
+            await saveLog(env, logEntry);
+            
             return new Response(JSON.stringify({ 
                 success: false,
                 error: error.message 
@@ -5160,40 +5852,75 @@ export default {
             const lastChecked = parsedData.lastStatusCheck || 0;
             const checkInterval = 3600000; // 1小时检查一次
             
-            // 如果请求了检查状态或者上次检查超过1小时
-            if (shouldCheckStatus || (now - lastChecked > checkInterval)) {
+            // 只在明确请求时才检查状态，避免自动检查导致超时
+            // 定时任务会定期更新状态，前端不需要频繁触发
+            if (shouldCheckStatus && (now - lastChecked > checkInterval)) {
                 // 获取所有链接
                 const allLinks = parsedData.links || [];
                 
                 // 检查所有链接状态
                 if (allLinks.length > 0) {
-                    const results = await checkAllLinksStatus(allLinks);
+                    // 使用智能缓存模式，避免每次都检查所有链接
+                    const results = await smartCheckLinks(allLinks, {
+                        cacheValidDuration: 3600000,  // 1小时缓存
+                        forceCheck: false,
+                        concurrency: 2,               // 降低到2
+                        timeout: 5000,
+                        maxRetries: 1,
+                        batchDelay: 1000,             // 1秒延迟
+                        checkFaviconFirst: true,
+                        faviconTimeout: 3000,
+                        maxLinks: 40                  // 限制最多40个
+                    });
                     
                     // 更新链接状态
+                    let updatedCount = 0;
+                    let okCount = 0;
+                    let errorCount = 0;
+                    
                     for (const link of allLinks) {
-                        if (results[link.url]) {
-                            link.status = results[link.url].isOk ? 'ok' : 'error';
-                            link.lastChecked = new Date().toISOString();
+                        const result = results[link.url];
+                        if (result) {
+                            link.status = result.isOk ? 'ok' : 'error';
+                            link.lastChecked = result.checkedAt || new Date().toISOString();
+                            link.statusCode = result.status;
+                            link.statusText = result.statusText;
+                            link.statusError = result.errorMessage || null;
+                            updatedCount++;
+                            
+                            if (result.isOk) {
+                                okCount++;
+                            } else {
+                                errorCount++;
+                                console.log(`链接检测失败: ${link.url}, 错误: ${result.errorMessage}`);
+                            }
+                        } else {
+                            // 如果没有检测结果，保持原有状态或设置为默认状态
+                            if (!link.status) {
+                                link.status = 'ok';
+                                link.lastChecked = new Date().toISOString();
+                            }
                         }
                     }
+                    
+                    console.log(`前端检测完成: 总计 ${allLinks.length}, 更新 ${updatedCount}, 正常 ${okCount}, 异常 ${errorCount}`);
                     
                     // 更新最后检查时间
                     parsedData.lastStatusCheck = now;
-                    
-                    // 确保所有链接都有状态
-                    for (const link of allLinks) {
-                        // 如果没有状态或状态为null，设置为正常状态
-                        if (!link.status) {
-                            link.status = 'ok'; // 默认为正常状态
-                            link.lastChecked = new Date().toISOString();
-                        }
-                    }
                     
                     // 保存更新后的数据
                     await env.CARD_ORDER.put(userId, JSON.stringify(parsedData));
                 }
             }
 
+            // 确保所有链接都有默认状态（即使没有检测）
+            const allLinks = parsedData.links || [];
+            for (const link of allLinks) {
+                if (!link.status) {
+                    link.status = 'ok'; // 默认为正常状态
+                }
+            }
+            
             // 验证 token
             if (authToken) {
                 const validation = await validateServerToken(authToken, env);
@@ -5235,6 +5962,48 @@ export default {
             status: 200,
             headers: { 'Content-Type': 'application/json' }
         });
+      }
+
+      // 获取检测日志
+      if (url.pathname === '/api/getLogs') {
+        const authToken = request.headers.get('Authorization');
+        
+        // 验证token（只有管理员可以查看日志）
+        const validation = await validateServerToken(authToken, env);
+        if (!validation.isValid) {
+            return new Response(JSON.stringify({ error: '需要管理员权限' }), {
+                status: 401,
+                headers: { 'Content-Type': 'application/json' }
+            });
+        }
+        
+        try {
+            // 获取日志数据
+            const logsData = await env.CARD_ORDER.get('check_logs');
+            const logs = logsData ? JSON.parse(logsData) : [];
+            
+            // 支持分页
+            const page = parseInt(url.searchParams.get('page') || '1');
+            const pageSize = parseInt(url.searchParams.get('pageSize') || '20');
+            const start = (page - 1) * pageSize;
+            const end = start + pageSize;
+            
+            return new Response(JSON.stringify({
+                logs: logs.slice(start, end),
+                total: logs.length,
+                page,
+                pageSize,
+                totalPages: Math.ceil(logs.length / pageSize)
+            }), {
+                status: 200,
+                headers: { 'Content-Type': 'application/json' }
+            });
+        } catch (error) {
+            return new Response(JSON.stringify({ error: error.message }), {
+                status: 500,
+                headers: { 'Content-Type': 'application/json' }
+            });
+        }
       }
 
       if (url.pathname === '/api/saveOrder' && request.method === 'POST') {
@@ -5467,6 +6236,31 @@ export default {
             await env.CARD_ORDER.put(userId, JSON.stringify(parsedData));
             
             const duration = Date.now() - startTime;
+            
+            // 记录手动检测日志
+            const logEntry = {
+                id: 'log_' + Date.now(),
+                timestamp: new Date(startTime).toISOString(),
+                endTime: new Date().toISOString(),
+                type: 'manual',
+                users: [{
+                    userId: userId,
+                    total: allLinks.length,
+                    ok: okCount,
+                    error: errorCount,
+                    cached: cachedCount,
+                    errorLinks: errorDetails.slice(0, 5).map(function(detail) {
+                        return { url: detail.url, error: detail.error };
+                    })
+                }],
+                summary: {
+                    success: true,
+                    totalUsers: 1,
+                    totalLinks: allLinks.length,
+                    message: '手动检测完成: ' + allLinks.length + ' 个链接'
+                }
+            };
+            await saveLog(env, logEntry);
             
             return new Response(JSON.stringify({
                 success: true,
